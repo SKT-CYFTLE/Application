@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">test</string>
+    <string name="app_name">에이닷</string>
 
     <string-array name="randomTxt">
         <item>겨울엔 역시 붕어빵이지! 군고마도 좋고~ 고구마 라떼도 좋아~ 넌 어때?</item>
@@ -7,7 +7,7 @@
         <item>클래식을 들으면 마음이 차분해져서 좋아~ 지금 클래식 감상 어때?</item>
         <item>겨울바람에 꽁꽁 얼어 있어? 그래도 움츠려있기 보단 힘차게 운동해보는 거 어때?</item>
         <item>밥친구 영상 고르기 힘들지? 재밌는 걸로 골라서 보여줄게~</item>
-        <item>지금 좀 심심하지 않아? 뭔하면 좋을까?</item>
+        <item>지금 좀 심심하지 않아? 뭘하면 좋을까?</item>
         <item>이제 뭐 할 거야?</item>
         <item>멍하니 흘려버리는 시간이 아깝다면 팟캐스트 듣는 거 어때?</item>
     </string-array>

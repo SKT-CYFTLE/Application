@@ -1,13 +1,19 @@
 package com.example.test;
 
+import static androidx.core.content.PackageManagerCompat.LOG_TAG;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -52,8 +58,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 finish();//인텐트 종료
                 overridePendingTransition(0, 0);//인텐트 효과 없애기
-                Intent intent = getIntent(); //인텐트
-                startActivity(intent); //액티비티 열기
+                Intent floatIntent = getIntent(); //인텐트
+                startActivity(floatIntent); //액티비티 열기
                 overridePendingTransition(0, 0);//인텐트 효과 없애기
             }
         });
@@ -61,7 +67,24 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.title, menu);
-
         return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.share:
+                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                shareIntent.addCategory(Intent.CATEGORY_DEFAULT);
+                shareIntent.putExtra(Intent.EXTRA_TEXT, "https://github.com/TA-PP");
+                shareIntent.setType("text/plain");
+                startActivity(Intent.createChooser(shareIntent, "앱을 선택해 주세요"));
+                return true;
+            case R.id.bell:
+                Intent bellIntent = new Intent(MainActivity.this, AlarmActivity.class);
+                startActivity(bellIntent);
+                finish();
+                return true;
+        }
+        return super .onOptionsItemSelected(item);
     }
 }

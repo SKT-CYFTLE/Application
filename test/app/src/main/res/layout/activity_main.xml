@@ -17,7 +17,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-
+            app:contentInsetStart="0dp"
             app:menu="@menu/title" />
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -25,10 +25,12 @@
         android:id="@+id/txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="180dp"
+        android:layout_marginTop="150dp"
+        android:fontFamily="@font/applesdgothicneoeb"
         android:text="Hello World!"
-        android:textSize="25sp"
+        android:textAlignment="center"
         android:textColor="@color/black"
+        android:textSize="23sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
