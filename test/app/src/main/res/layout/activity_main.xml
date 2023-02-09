@@ -27,7 +27,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
         android:fontFamily="@font/applesdgothicneoeb"
-        android:text="Hello World!"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="23sp"

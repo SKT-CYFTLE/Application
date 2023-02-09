@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         // 툴바의 타이틀을 삭제 하는 것
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-
         // 스위치 버튼 커스텀하는 데 필요
         SwitchCompat switchcp = (SwitchCompat) findViewById(R.id.switchOnOff);
         ImageView imgMic = (ImageView) findViewById(R.id.switchMic);
