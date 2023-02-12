@@ -16,6 +16,11 @@ public class AlarmActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm);
+
+        // 툴바 만들기
+        Toolbar toolbar = findViewById(R.id.alarmToolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
     @Override
@@ -27,22 +32,20 @@ public class AlarmActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.close:
-                Intent backIntent = new Intent(AlarmActivity.this, MainActivity.class);
-                backIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(backIntent);
                 finish();
+
                 return true;
         }
         return super .onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-
-        Intent backIntent = new Intent(AlarmActivity.this, MainActivity.class);
-        backIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(backIntent);
-        finish();
-    }
+//    @Override
+//    public void onBackPressed() {
+//        super.onBackPressed();
+//
+//        Intent backIntent = new Intent(AlarmActivity.this, MainActivity.class);
+//        backIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//        startActivity(backIntent);
+//        finish();
+//    }
 }

@@ -63,11 +63,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    // 커스텀 툴바 xml에서 버튼을 불러오는 메소드
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.title, menu);
         return true;
     }
+    // 커스텀 툴바 버튼이 눌렸을 때 구현 시킬 기능들
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -77,11 +79,17 @@ public class MainActivity extends AppCompatActivity {
                 shareIntent.putExtra(Intent.EXTRA_TEXT, "https://github.com/TA-PP");
                 shareIntent.setType("text/plain");
                 startActivity(Intent.createChooser(shareIntent, "앱을 선택해 주세요"));
+
                 return true;
             case R.id.bell:
                 Intent bellIntent = new Intent(MainActivity.this, AlarmActivity.class);
                 startActivity(bellIntent);
-                finish();
+
+                return true;
+            case android.R.id.home:
+                Intent drawerIntent = new Intent(MainActivity.this, DrawerActivity.class);
+                startActivity(drawerIntent);
+
                 return true;
         }
         return super .onOptionsItemSelected(item);
