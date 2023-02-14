@@ -1,6 +1,274 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    tools:context=".MainActivity">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="250dp"
+            android:src="@drawable/adot_top" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/applesdgothicneoeb"
+                android:text="안녕하세요! 김태형님"
+                android:textSize="20sp"
+                >
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="fill_horizontal"
+            android:orientation="horizontal"
+            >
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="#f5f6fa"
+                android:drawableTop="@drawable/b1"
+                android:fontFamily="@font/applesdgothicneoeb"
+                android:text="퀘스트"
+                android:textStyle="bold"
+                android:textColor="@color/black" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="#f5f6fa"
+                android:drawableTop="@drawable/b2"
+                android:fontFamily="@font/applesdgothicneoeb"
+                android:text="리워드"
+                android:textStyle="bold"
+                android:textColor="@color/black" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="#f5f6fa"
+                android:drawableTop="@drawable/b3"
+                android:fontFamily="@font/applesdgothicneoeb"
+                android:text="캐릭터"
+                android:textStyle="bold"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/applesdgothicneoeb"
+            android:text="편하닷"
+            android:textStyle="bold"
+            android:textSize="23sp"/>
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TableRow>
+                <Button
+                    android:layout_width="250dp"
+                    android:layout_height="80dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_weight="1"
+                    android:background="#00ff0000"
+                    android:drawableLeft="@drawable/drawble_routine"
+                    android:fontFamily="@font/applesdgothicneoeb"
+                    android:text="루틴"
+                    android:textColor="@color/black" />
+
+                <Button
+                    android:layout_width="250dp"
+                    android:layout_height="80dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_weight="1"
+                    android:background="#00ff0000"
+                    android:drawableLeft="@drawable/drawble_calender"
+                    android:fontFamily="@font/applesdgothicneoeb"
+                    android:text="캘린더"
+                    android:textColor="@color/black" />
+            </TableRow>
+
+            <TableRow>
+                <Button
+                    android:layout_width="250dp"
+                    android:layout_height="80dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_weight="1"
+                    android:background="#00ff0000"
+                    android:drawableLeft="@drawable/drawble_alarm"
+                    android:fontFamily="@font/applesdgothicneoeb"
+                    android:text="알람"
+                    android:textColor="@color/black" />
+
+                <Button
+                    android:layout_width="250dp"
+                    android:layout_height="80dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_weight="1"
+                    android:background="#00ff0000"
+                    android:drawableLeft="@drawable/drawble_tmap"
+                    android:fontFamily="@font/applesdgothicneoeb"
+                    android:text="TMAP"
+                    android:textColor="@color/black" />
+            </TableRow>
+        </TableLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+
+            android:background="#f5f6f8"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/applesdgothicneoeb"
+            android:text="궁금하닷"
+            android:textStyle="bold"
+            android:textSize="23sp"/>
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TableRow>
+                <Button
+                    android:layout_width="250dp"
+                    android:layout_height="80dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_weight="1"
+                    android:background="#00ff0000"
+                    android:drawableLeft="@drawable/drawble_qupid"
+                    android:fontFamily="@font/applesdgothicneoeb"
+                    android:text="큐피드"
+                    android:textColor="@color/black" />
+
+                <Button
+                    android:layout_width="250dp"
+                    android:layout_height="80dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_weight="1"
+                    android:background="#00ff0000"
+                    android:drawableLeft="@drawable/drawble_tutorial"
+                    android:fontFamily="@font/applesdgothicneoeb"
+                    android:text="튜토리얼"
+                    android:textColor="@color/black" />
+            </TableRow>
+
+
+        </TableLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#f5f6f8"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/applesdgothicneoeb"
+            android:text="재미있닷"
+            android:textStyle="bold"
+            android:textSize="23sp"/>
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TableRow>
+                <Button
+                    android:layout_width="250dp"
+                    android:layout_height="80dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_weight="1"
+                    android:background="#00ff0000"
+                    android:drawableLeft="@drawable/drawble_tv"
+                    android:fontFamily="@font/applesdgothicneoeb"
+                    android:text="tv"
+                    android:textColor="@color/black" />
+
+                <Button
+                    android:layout_width="250dp"
+                    android:layout_height="80dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_weight="1"
+                    android:background="#00ff0000"
+                    android:drawableLeft="@drawable/drawble_game"
+                    android:fontFamily="@font/applesdgothicneoeb"
+                    android:text="게임"
+                    android:textColor="@color/black" />
+            </TableRow>
+
+            <TableRow>
+                <Button
+                    android:layout_width="250dp"
+                    android:layout_height="80dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_weight="1"
+                    android:background="#00ff0000"
+                    android:drawableLeft="@drawable/drawble_photo"
+                    android:fontFamily="@font/applesdgothicneoeb"
+                    android:text="알람"
+                    android:textColor="@color/black" />
+
+                <Button
+                    android:layout_width="250dp"
+                    android:layout_height="80dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_weight="1"
+                    android:background="#00ff0000"
+                    android:drawableLeft="@drawable/drawble_musicrecommend"
+                    android:text="TMAP"
+                    android:textColor="@color/black" />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+
+
+</ScrollView>
