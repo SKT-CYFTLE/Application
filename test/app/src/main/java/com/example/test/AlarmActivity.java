@@ -33,6 +33,8 @@ public class AlarmActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.close:
                 finish();
+                // 액티비티가 오른쪽으로 나가는 애니메이션
+                overridePendingTransition(R.anim.anim_none, R.anim.anim_slide_out_right);
 
                 return true;
         }
