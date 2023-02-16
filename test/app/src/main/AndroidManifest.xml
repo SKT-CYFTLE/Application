@@ -28,6 +28,9 @@
         <activity
             android:name=".AlarmActivity"
             android:exported="false" />
+        <activity
+            android:name=".CyftleActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

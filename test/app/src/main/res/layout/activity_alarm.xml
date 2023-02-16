@@ -33,6 +33,16 @@
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
+    <ImageView
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="140dp"
+        android:src="@drawable/orange_alarm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appbarLayout" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"

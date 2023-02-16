@@ -40,14 +40,4 @@ public class AlarmActivity extends AppCompatActivity {
         }
         return super .onOptionsItemSelected(item);
     }
-
-//    @Override
-//    public void onBackPressed() {
-//        super.onBackPressed();
-//
-//        Intent backIntent = new Intent(AlarmActivity.this, MainActivity.class);
-//        backIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//        startActivity(backIntent);
-//        finish();
-//    }
 }

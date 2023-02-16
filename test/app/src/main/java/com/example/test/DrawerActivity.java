@@ -30,6 +30,23 @@ public class DrawerActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
+        ImageView logo = (ImageView) findViewById(R.id.cyftle_logo);
+        TextView text = (TextView) findViewById(R.id.cyftle_text);
+
+        logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent logoIntent = new Intent(DrawerActivity.this, CyftleActivity.class);
+                startActivity(logoIntent);
+            }
+        });
+        text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent textIntent = new Intent(DrawerActivity.this, CyftleActivity.class);
+                startActivity(textIntent);
+            }
+        });
     }
     // 툴바 초기화
     @Override

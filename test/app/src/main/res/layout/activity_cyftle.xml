@@ -35,21 +35,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="72dp"
-            android:layout_marginTop="164dp"
-            android:text="어떤 동화를\n 듣고 싶나요?"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="55dp"
             android:fontFamily="@font/applesdgothicneoeb"
-            android:textSize="20sp"
+            android:text="어떤 동화를\n 듣고 싶나요?"
+            android:textAlignment="center"
             android:textColor="@color/black"
+            android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appbarLayout" />
 
         <ImageView
             android:layout_width="200dp"
             android:layout_height="200dp"
+            android:layout_gravity="bottom"
             android:src="@drawable/qurious_character" />
     </LinearLayout>
 
@@ -59,16 +62,16 @@
         <LinearLayout
             android:layout_width="300dp"
             android:layout_height="300dp"
+            android:layout_marginLeft="20dp"
             android:orientation="horizontal">
-
             <FrameLayout
-                android:layout_width="290dp"
-                android:layout_height="290dp"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="@drawable/alarm_radius">
+                android:background="@drawable/background">
 
                 <ImageView
-                    android:layout_width="250dp"
+                    android:layout_width="180dp"
                     android:layout_height="250dp"
                     android:layout_gravity="center"
                     android:src="@mipmap/logo" />
@@ -77,6 +80,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|bottom"
+                    android:layout_marginBottom="7dp"
                     android:text="에이닷"
                     android:fontFamily="@font/applesdgothicneoeb"
                     android:textColor="@color/black"
@@ -84,34 +88,13 @@
             </FrameLayout>
 
             <FrameLayout
-                android:layout_width="290dp"
-                android:layout_height="290dp"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="@drawable/alarm_radius">
+                android:background="@drawable/background">
 
                 <ImageView
-                    android:layout_width="250dp"
-                    android:layout_height="250dp"
-                    android:layout_gravity="center"
-                    android:src="@mipmap/logo" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|bottom"
-                    android:text="에이닷"
-                    android:fontFamily="@font/applesdgothicneoeb"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
-            </FrameLayout>
-            <FrameLayout
-                android:layout_width="290dp"
-                android:layout_height="290dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/alarm_radius">
-
-                <ImageView
-                    android:layout_width="250dp"
+                    android:layout_width="180dp"
                     android:layout_height="250dp"
                     android:layout_gravity="center"
                     android:src="@mipmap/logo" />
@@ -126,13 +109,13 @@
                     android:textSize="20sp" />
             </FrameLayout>
             <FrameLayout
-                android:layout_width="290dp"
-                android:layout_height="290dp"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="@drawable/alarm_radius">
+                android:background="@drawable/background">
 
                 <ImageView
-                    android:layout_width="250dp"
+                    android:layout_width="180dp"
                     android:layout_height="250dp"
                     android:layout_gravity="center"
                     android:src="@mipmap/logo" />
@@ -147,13 +130,13 @@
                     android:textSize="20sp" />
             </FrameLayout>
             <FrameLayout
-                android:layout_width="290dp"
-                android:layout_height="290dp"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="@drawable/alarm_radius">
+                android:background="@drawable/background">
 
                 <ImageView
-                    android:layout_width="250dp"
+                    android:layout_width="180dp"
                     android:layout_height="250dp"
                     android:layout_gravity="center"
                     android:src="@mipmap/logo" />
@@ -168,13 +151,13 @@
                     android:textSize="20sp" />
             </FrameLayout>
             <FrameLayout
-                android:layout_width="290dp"
-                android:layout_height="290dp"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="@drawable/alarm_radius">
+                android:background="@drawable/background">
 
                 <ImageView
-                    android:layout_width="250dp"
+                    android:layout_width="180dp"
                     android:layout_height="250dp"
                     android:layout_gravity="center"
                     android:src="@mipmap/logo" />
@@ -189,13 +172,13 @@
                     android:textSize="20sp" />
             </FrameLayout>
             <FrameLayout
-                android:layout_width="290dp"
-                android:layout_height="290dp"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="@drawable/alarm_radius">
+                android:background="@drawable/background">
 
                 <ImageView
-                    android:layout_width="250dp"
+                    android:layout_width="180dp"
                     android:layout_height="250dp"
                     android:layout_gravity="center"
                     android:src="@mipmap/logo" />
@@ -210,13 +193,13 @@
                     android:textSize="20sp" />
             </FrameLayout>
             <FrameLayout
-                android:layout_width="290dp"
-                android:layout_height="290dp"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="@drawable/alarm_radius">
+                android:background="@drawable/background">
 
                 <ImageView
-                    android:layout_width="250dp"
+                    android:layout_width="180dp"
                     android:layout_height="250dp"
                     android:layout_gravity="center"
                     android:src="@mipmap/logo" />
@@ -231,13 +214,13 @@
                     android:textSize="20sp" />
             </FrameLayout>
             <FrameLayout
-                android:layout_width="290dp"
-                android:layout_height="290dp"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="@drawable/alarm_radius">
+                android:background="@drawable/background">
 
                 <ImageView
-                    android:layout_width="250dp"
+                    android:layout_width="180dp"
                     android:layout_height="250dp"
                     android:layout_gravity="center"
                     android:src="@mipmap/logo" />
@@ -252,13 +235,13 @@
                     android:textSize="20sp" />
             </FrameLayout>
             <FrameLayout
-                android:layout_width="290dp"
-                android:layout_height="290dp"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="@drawable/alarm_radius">
+                android:background="@drawable/background">
 
                 <ImageView
-                    android:layout_width="250dp"
+                    android:layout_width="180dp"
                     android:layout_height="250dp"
                     android:layout_gravity="center"
                     android:src="@mipmap/logo" />
@@ -272,6 +255,31 @@
                     android:textColor="@color/black"
                     android:textSize="20sp" />
             </FrameLayout>
+            <FrameLayout
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/background">
+
+                <ImageView
+                    android:layout_width="180dp"
+                    android:layout_height="250dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/logo" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:text="에이닷"
+                    android:fontFamily="@font/applesdgothicneoeb"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+            </FrameLayout>
+            <View
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:background="@color/white"/>
         </LinearLayout>
 
     </HorizontalScrollView>
