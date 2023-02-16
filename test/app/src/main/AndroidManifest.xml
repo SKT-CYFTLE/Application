@@ -31,6 +31,9 @@
         <activity
             android:name=".CyftleActivity"
             android:exported="false" />
+        <activity
+            android:name=".DuckActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
