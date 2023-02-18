@@ -33,19 +33,11 @@ public class AlarmActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.close:
                 finish();
+                // 액티비티가 오른쪽으로 나가는 애니메이션
+                overridePendingTransition(R.anim.anim_none, R.anim.anim_slide_out_right);
 
                 return true;
         }
         return super .onOptionsItemSelected(item);
     }
-
-//    @Override
-//    public void onBackPressed() {
-//        super.onBackPressed();
-//
-//        Intent backIntent = new Intent(AlarmActivity.this, MainActivity.class);
-//        backIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//        startActivity(backIntent);
-//        finish();
-//    }
 }

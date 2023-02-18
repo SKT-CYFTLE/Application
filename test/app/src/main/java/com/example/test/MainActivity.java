@@ -39,9 +39,9 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         // 스위치 버튼 커스텀하는 데 필요
-        SwitchCompat switchcp = (SwitchCompat) findViewById(R.id.switchOnOff);
-        ImageView imgMic = (ImageView) findViewById(R.id.switchMic);
-        ImageView imgKey = (ImageView) findViewById(R.id.switchKeyboard);
+//        SwitchCompat switchcp = (SwitchCompat) findViewById(R.id.switchOnOff);
+//        ImageView imgMic = (ImageView) findViewById(R.id.switchMic);
+//        ImageView imgKey = (ImageView) findViewById(R.id.switchKeyboard);
 
         // 랜덤 텍스트 구현
         TextView txt = (TextView) findViewById(R.id.txt);
@@ -84,11 +84,15 @@ public class MainActivity extends AppCompatActivity {
             case R.id.bell:
                 Intent bellIntent = new Intent(MainActivity.this, AlarmActivity.class);
                 startActivity(bellIntent);
+                // 액티비티 왼쪽에서 오른쪽으로 들어오는 애니메이션
+                overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_none);
 
                 return true;
             case android.R.id.home:
                 Intent drawerIntent = new Intent(MainActivity.this, DrawerActivity.class);
                 startActivity(drawerIntent);
+                // 액티비티 오른쪽에서 왼쪽으로 들어오는 애니메이션
+                overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_none);
 
                 return true;
         }
