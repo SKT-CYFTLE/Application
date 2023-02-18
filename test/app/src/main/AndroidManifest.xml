@@ -34,7 +34,31 @@
             android:name=".CyftleActivity"
             android:exported="false" />
         <activity
-            android:name=".DuckActivity"
+            android:name=".Duck1Fragment"
+            android:exported="false" />
+        <activity
+            android:name=".Duck2Fragment"
+            android:exported="false" />
+        <activity
+            android:name=".Duck3Fragment"
+            android:exported="false" />
+        <activity
+            android:name=".ViewDuckActivity"
+            android:exported="false" />
+        <activity
+        android:name=".ZoomOutPageTransformer"
+        android:exported="false" />
+        <activity
+            android:name=".Frog1Fragment"
+            android:exported="false" />
+        <activity
+            android:name=".Frog2Fragment"
+            android:exported="false" />
+        <activity
+            android:name=".Frog3Fragment"
+            android:exported="false" />
+        <activity
+            android:name=".ViewFrogActivity"
             android:exported="false" />
     </application>
 
