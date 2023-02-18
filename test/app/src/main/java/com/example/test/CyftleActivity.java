@@ -26,18 +26,34 @@ public class CyftleActivity extends AppCompatActivity {
 
         ImageView duckImage = (ImageView) findViewById(R.id.duck_image);
         TextView duckText = (TextView) findViewById(R.id.duck_text);
+        ImageView frogImage = (ImageView) findViewById(R.id.frog_image);
+        TextView frogText = (TextView) findViewById(R.id.frog_text);
         duckImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent duckIntent = new Intent(CyftleActivity.this, DuckActivity.class);
+                Intent duckIntent = new Intent(CyftleActivity.this, ViewDuckActivity.class);
                 startActivity(duckIntent);
             }
         });
         duckText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent duckIntent = new Intent(CyftleActivity.this, DuckActivity.class);
+                Intent duckIntent = new Intent(CyftleActivity.this, ViewDuckActivity.class);
                 startActivity(duckIntent);
+            }
+        });
+        frogImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent frogIntent = new Intent(CyftleActivity.this, ViewFrogActivity.class);
+                startActivity(frogIntent);
+            }
+        });
+        frogText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent frogIntent = new Intent(CyftleActivity.this, ViewFrogActivity.class);
+                startActivity(frogIntent);
             }
         });
     }
