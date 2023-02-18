@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.text.method.ScrollingMovementMethod;
@@ -17,6 +18,8 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Locale;
 
 public class DuckActivity extends AppCompatActivity {
@@ -34,11 +37,11 @@ public class DuckActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        ImageView duck_image = (ImageView) findViewById(R.id.ducktale_image); 
+        ImageView duck_image = (ImageView) findViewById(R.id.ducktale_image);
 
         TextView duck = (TextView) findViewById(R.id.duck_tale);
-        // textview에서 스크롤 적용하기
-        duck.setText("따스한 햇살이 내려앉은 개울가 덤불 숲에서,\n" +
+        duck.setText(
+                "따스한 햇살이 내려앉은 개울가 덤불 숲에서,\n" +
                 "어미오리가 알을 품고 있었어요.\n" +
                 "톡! 톡! 알에 금이 가더니,\n" +
                 "빠직 빠지직! 아기오리들이 하나둘 고개를 내밀었어요.\n" +
@@ -54,7 +57,9 @@ public class DuckActivity extends AppCompatActivity {
                 "하나 둘 태어납니다.\n" +
                 "\n" +
                 "그런데 유독 커다란 알이 하나 남아 있네요.\n" +
-                "엄마 오리는 다시 알을 품습니다.");
+                "엄마 오리는 다시 알을 품습니다."
+        );
+        // textview 스크롤 가능하게 한다
         duck.setMovementMethod(new ScrollingMovementMethod());
         // tts를 생성하고 OninitListener로 초기화 한다.
         tts = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
@@ -69,7 +74,7 @@ public class DuckActivity extends AppCompatActivity {
         duck_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tts.setSpeechRate(1.75f);
+                tts.setSpeechRate(1.0f);
                 // TextView에 있는 문장을 읽는다.
                 tts.speak(duck.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
             }
@@ -92,7 +97,7 @@ public class DuckActivity extends AppCompatActivity {
         }
         return super .onOptionsItemSelected(item);
     }
-    // TTS  객체가 남아있다면 실행을 중지하고 메모리에서 제거한다.
+    // TTS 객체가 남아있다면 실행을 중지하고 메모리에서 제거한다.
     @Override
     protected void onDestroy() {
         super .onDestroy();

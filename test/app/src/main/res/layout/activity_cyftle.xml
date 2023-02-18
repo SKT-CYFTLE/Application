@@ -83,7 +83,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|bottom"
                     android:layout_marginBottom="7dp"
-                    android:text="미운 오리 새끼"
+                    android:text="미운 아기 오리"
                     android:fontFamily="@font/applesdgothicneoeb"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
