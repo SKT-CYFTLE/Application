@@ -35,7 +35,7 @@ public class ViewFrogActivity extends AppCompatActivity {
         fragments.add(new Frog3Fragment());
         // 페이저 생성
         pager = findViewById(R.id.pager);
-        pagerAdapter = new PagerAdapter(this, fragments);
+        pagerAdapter = new FrogPagerAdapter(this, fragments);
         pager.setAdapter(pagerAdapter);
         pager.setPageTransformer(pageTransformer);
 

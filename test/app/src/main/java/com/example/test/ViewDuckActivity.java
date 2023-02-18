@@ -35,7 +35,7 @@ public class ViewDuckActivity extends AppCompatActivity {
         fragments.add(new Duck3Fragment());
         // 페이저 생성
         pager = findViewById(R.id.pager);
-        pagerAdapter = new PagerAdapter(this, fragments);
+        pagerAdapter = new DuckPagerAdapter(this, fragments);
         pager.setAdapter(pagerAdapter);
         pager.setPageTransformer(pageTransformer);
 
