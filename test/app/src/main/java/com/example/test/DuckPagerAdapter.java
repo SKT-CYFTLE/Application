@@ -7,11 +7,11 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import java.util.List;
 
-public class PagerAdapter extends FragmentStateAdapter {
+public class DuckPagerAdapter extends FragmentStateAdapter {
     private List<Fragment> fragments;
     private static final int NUM_PAGES = 3;
 
-    public PagerAdapter(FragmentActivity fragmentActivity, List<Fragment> fragments) {
+    public DuckPagerAdapter(FragmentActivity fragmentActivity, List<Fragment> fragments) {
         super(fragmentActivity);
         this.fragments = fragments;
     }

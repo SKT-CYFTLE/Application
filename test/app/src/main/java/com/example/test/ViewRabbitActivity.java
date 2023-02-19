@@ -14,7 +14,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViewDuckActivity extends AppCompatActivity {
+public class ViewRabbitActivity extends AppCompatActivity {
     private ViewPager2 pager;
     private FragmentStateAdapter pagerAdapter;
     private ZoomOutPageTransformer pageTransformer;
@@ -22,7 +22,7 @@ public class ViewDuckActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_viewduck);
+        setContentView(R.layout.activity_viewrabbit);
 
         // 툴바 생성
         Toolbar toolbar = findViewById(R.id.alarmToolbar);
@@ -30,12 +30,12 @@ public class ViewDuckActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         // 프래그먼트 리스트 생성
         List<Fragment> fragments = new ArrayList<>();
-        fragments.add(new Duck1Fragment());
-        fragments.add(new Duck2Fragment());
-        fragments.add(new Duck3Fragment());
+        fragments.add(new Rabbit1Fragment());
+        fragments.add(new Rabbit2Fragment());
+        fragments.add(new Rabbit3Fragment());
         // 페이저 생성
         pager = findViewById(R.id.pager);
-        pagerAdapter = new DuckPagerAdapter(this, fragments);
+        pagerAdapter = new RabbitPagerAdapter(this, fragments);
         pager.setAdapter(pagerAdapter);
         pager.setPageTransformer(pageTransformer);
 

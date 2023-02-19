@@ -32,16 +32,7 @@
             android:exported="false" />
         <activity
             android:name=".CyftleActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Duck1Fragment"
-            android:exported="false" />
-        <activity
-            android:name=".Duck2Fragment"
-            android:exported="false" />
-        <activity
-            android:name=".Duck3Fragment"
-            android:exported="false" />
+            android:exported="false" />+
         <activity
             android:name=".ViewDuckActivity"
             android:exported="false" />
@@ -49,16 +40,13 @@
         android:name=".ZoomOutPageTransformer"
         android:exported="false" />
         <activity
-            android:name=".Frog1Fragment"
-            android:exported="false" />
-        <activity
-            android:name=".Frog2Fragment"
-            android:exported="false" />
-        <activity
-            android:name=".Frog3Fragment"
-            android:exported="false" />
-        <activity
             android:name=".ViewFrogActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ViewRabbitActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ViewPigActivity"
             android:exported="false" />
     </application>
 
