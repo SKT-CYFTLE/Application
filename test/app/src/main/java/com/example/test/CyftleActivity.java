@@ -32,6 +32,8 @@ public class CyftleActivity extends AppCompatActivity {
         TextView rabbitText = (TextView) findViewById(R.id.rabbit_text);
         ImageView pigImage = (ImageView) findViewById(R.id.pig_image);
         TextView pigText = (TextView) findViewById(R.id.pig_text);
+        ImageView goldImage = (ImageView) findViewById(R.id.gold_image);
+        TextView goldText = (TextView) findViewById(R.id.gold_text);
         duckImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,6 +87,20 @@ public class CyftleActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent frogIntent = new Intent(CyftleActivity.this, ViewPigActivity.class);
+                startActivity(frogIntent);
+            }
+        });
+        goldImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent frogIntent = new Intent(CyftleActivity.this, ViewGoldActivity.class);
+                startActivity(frogIntent);
+            }
+        });
+        goldText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent frogIntent = new Intent(CyftleActivity.this, ViewGoldActivity.class);
                 startActivity(frogIntent);
             }
         });

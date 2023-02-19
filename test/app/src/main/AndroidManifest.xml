@@ -48,6 +48,9 @@
         <activity
             android:name=".ViewPigActivity"
             android:exported="false" />
+        <activity
+            android:name=".ViewGoldActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
