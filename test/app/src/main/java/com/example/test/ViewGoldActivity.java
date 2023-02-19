@@ -32,6 +32,7 @@ public class ViewGoldActivity extends AppCompatActivity {
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new Frog1Fragment());
         fragments.add(new Frog2Fragment());
+        fragments.add(new SttFragment());
         fragments.add(new Frog3Fragment());
         // 페이저 생성
         pager = findViewById(R.id.pager);

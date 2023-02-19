@@ -9,7 +9,7 @@ import java.util.List;
 
 public class RabbitPagerAdapter extends FragmentStateAdapter {
     private List<Fragment> fragments;
-    private static final int NUM_PAGES = 3;
+    private static final int NUM_PAGES = 4;
 
     public RabbitPagerAdapter(FragmentActivity fragmentActivity, List<Fragment> fragments) {
         super(fragmentActivity);
@@ -21,6 +21,7 @@ public class RabbitPagerAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) { //포지션마다 있을 fragment설정
         if (position == 0) return new Rabbit1Fragment();
         else if (position == 1) return new Rabbit2Fragment();
+        else if (position == 2) return new SttFragment();
         else return new Rabbit3Fragment();
     }
 

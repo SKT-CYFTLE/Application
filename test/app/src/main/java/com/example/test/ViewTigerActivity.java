@@ -32,6 +32,7 @@ public class ViewTigerActivity extends AppCompatActivity {
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new Tiger1Fragment());
         fragments.add(new Tiger2Fragment());
+        fragments.add(new SttFragment());
         fragments.add(new Tiger3Fragment());
         // 페이저 생성
         pager = findViewById(R.id.pager);

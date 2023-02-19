@@ -32,6 +32,7 @@ public class ViewBackFrogActivity extends AppCompatActivity {
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new BackFrog1Fragment());
         fragments.add(new BackFrog2Fragment());
+        fragments.add(new SttFragment());
         fragments.add(new BackFrog3Fragment());
         // 페이저 생성
         pager = findViewById(R.id.pager);

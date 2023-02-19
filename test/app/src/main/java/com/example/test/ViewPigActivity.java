@@ -32,6 +32,7 @@ public class ViewPigActivity extends AppCompatActivity {
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new Pig1Fragment());
         fragments.add(new Pig2Fragment());
+        fragments.add(new SttFragment());
         fragments.add(new Pig3Fragment());
         // 페이저 생성
         pager = findViewById(R.id.pager);

@@ -32,6 +32,7 @@ public class ViewRabbitActivity extends AppCompatActivity {
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new Rabbit1Fragment());
         fragments.add(new Rabbit2Fragment());
+        fragments.add(new SttFragment());
         fragments.add(new Rabbit3Fragment());
         // 페이저 생성
         pager = findViewById(R.id.pager);

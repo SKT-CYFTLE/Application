@@ -32,6 +32,7 @@ public class ViewFoxActivity extends AppCompatActivity {
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new Fox1Fragment());
         fragments.add(new Fox2Fragment());
+        fragments.add(new SttFragment());
         fragments.add(new Fox3Fragment());
         // 페이저 생성
         pager = findViewById(R.id.pager);
