@@ -34,6 +34,8 @@ public class CyftleActivity extends AppCompatActivity {
         TextView pigText = (TextView) findViewById(R.id.pig_text);
         ImageView goldImage = (ImageView) findViewById(R.id.gold_image);
         TextView goldText = (TextView) findViewById(R.id.gold_text);
+        ImageView foxImage = (ImageView) findViewById(R.id.fox_image);
+        TextView foxText = (TextView) findViewById(R.id.fox_text);
         duckImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,43 +67,57 @@ public class CyftleActivity extends AppCompatActivity {
         rabbitImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent frogIntent = new Intent(CyftleActivity.this, ViewRabbitActivity.class);
-                startActivity(frogIntent);
+                Intent rabbitIntent = new Intent(CyftleActivity.this, ViewRabbitActivity.class);
+                startActivity(rabbitIntent);
             }
         });
         rabbitText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent frogIntent = new Intent(CyftleActivity.this, ViewRabbitActivity.class);
-                startActivity(frogIntent);
+                Intent rabbitIntent = new Intent(CyftleActivity.this, ViewRabbitActivity.class);
+                startActivity(rabbitIntent);
             }
         });
         pigImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent frogIntent = new Intent(CyftleActivity.this, ViewPigActivity.class);
-                startActivity(frogIntent);
+                Intent pigIntent = new Intent(CyftleActivity.this, ViewPigActivity.class);
+                startActivity(pigIntent);
             }
         });
         pigText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent frogIntent = new Intent(CyftleActivity.this, ViewPigActivity.class);
-                startActivity(frogIntent);
+                Intent pigIntent = new Intent(CyftleActivity.this, ViewPigActivity.class);
+                startActivity(pigIntent);
             }
         });
         goldImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent frogIntent = new Intent(CyftleActivity.this, ViewGoldActivity.class);
-                startActivity(frogIntent);
+                Intent goldIntent = new Intent(CyftleActivity.this, ViewGoldActivity.class);
+                startActivity(goldIntent);
             }
         });
         goldText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent frogIntent = new Intent(CyftleActivity.this, ViewGoldActivity.class);
-                startActivity(frogIntent);
+                Intent goldIntent = new Intent(CyftleActivity.this, ViewGoldActivity.class);
+                startActivity(goldIntent);
+            }
+        });
+        foxImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent foxIntent = new Intent(CyftleActivity.this, ViewFoxActivity.class);
+                startActivity(foxIntent);
+            }
+        });
+        foxText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent foxIntent = new Intent(CyftleActivity.this, ViewFoxActivity.class);
+                startActivity(foxIntent);
             }
         });
     }
