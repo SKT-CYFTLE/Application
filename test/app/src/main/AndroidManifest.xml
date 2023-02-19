@@ -54,6 +54,9 @@
         <activity
             android:name=".ViewFoxActivity"
             android:exported="false" />
+        <activity
+            android:name=".ViewTigerActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
