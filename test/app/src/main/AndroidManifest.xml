@@ -57,6 +57,9 @@
         <activity
             android:name=".ViewTigerActivity"
             android:exported="false" />
+        <activity
+            android:name=".ViewBackFrogActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
