@@ -25,25 +25,25 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Locale;
 
-public class Frog1Fragment extends Fragment {
+public class Rabbit1Fragment extends Fragment {
 
     private TextToSpeech tts;
-    private TextView frog;
+    private TextView rabbit;
     Context ct;
-    public Frog1Fragment() {
+    public Rabbit1Fragment() {
         // Required empty public constructor
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_frog1, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_rabbit1, container, false);
         ct = getActivity().getApplication();
-        ImageView frog_image = (ImageView) rootView.findViewById(R.id.frogtale_image);
+        ImageView rabbit_image = (ImageView) rootView.findViewById(R.id.rabbittale_image);
 
         // Text file에서 내용 읽어오기
         InputStream is = null;
         try {
-            is = getActivity().getAssets().open("frog.txt");
+            is = getActivity().getAssets().open("rabbit.txt");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -60,10 +60,10 @@ public class Frog1Fragment extends Fragment {
         }
         String text = sb.toString();
 
-        TextView frog = (TextView) rootView.findViewById(R.id.frog_tale);
-        frog.setText(text);
+        TextView rabbit = (TextView) rootView.findViewById(R.id.rabbit_tale);
+        rabbit.setText(text);
         // textview 스크롤 가능하게 한다
-        frog.setMovementMethod(new ScrollingMovementMethod());
+        rabbit.setMovementMethod(new ScrollingMovementMethod());
 
         // tts를 생성하고 OninitListener로 초기화 한다.
         tts = new TextToSpeech(ct, new TextToSpeech.OnInitListener() {
@@ -75,12 +75,12 @@ public class Frog1Fragment extends Fragment {
                 }
             }
         });
-        frog_image.setOnClickListener(new View.OnClickListener() {
+        rabbit_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 tts.setSpeechRate(1.0f);
                 // TextView에 있는 문장을 읽는다.
-                tts.speak(frog.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
+                tts.speak(rabbit.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
             }
         });
         return rootView;

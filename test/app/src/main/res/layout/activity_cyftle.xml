@@ -114,30 +114,7 @@
                     android:textColor="@color/black"
                     android:textSize="20sp" />
             </FrameLayout>
-            <FrameLayout
-                android:layout_width="190dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@drawable/background">
 
-                <ImageView
-                    android:id="@+id/cat_image"
-                    android:layout_width="180dp"
-                    android:layout_height="250dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/cat" />
-
-                <TextView
-                    android:id="@+id/cat_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="7dp"
-                    android:layout_gravity="center_horizontal|bottom"
-                    android:text="장화 신은 고양이"
-                    android:fontFamily="@font/applesdgothicneoeb"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
-            </FrameLayout>
             <FrameLayout
                 android:layout_width="190dp"
                 android:layout_height="wrap_content"
@@ -258,30 +235,7 @@
                     android:textColor="@color/black"
                     android:textSize="20sp" />
             </FrameLayout>
-            <FrameLayout
-                android:layout_width="190dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@drawable/background">
 
-                <ImageView
-                    android:id="@+id/ant_image"
-                    android:layout_width="180dp"
-                    android:layout_height="250dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ant" />
-
-                <TextView
-                    android:id="@+id/ant_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="7dp"
-                    android:layout_gravity="center_horizontal|bottom"
-                    android:text="개미와 배짱이"
-                    android:fontFamily="@font/applesdgothicneoeb"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
-            </FrameLayout>
             <FrameLayout
                 android:layout_width="190dp"
                 android:layout_height="wrap_content"

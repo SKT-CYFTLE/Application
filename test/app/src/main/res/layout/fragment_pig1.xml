@@ -29,11 +29,11 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/frogtale_image"
+            android:id="@+id/pigtale_image"
             android:layout_width="275dp"
             android:layout_height="275dp"
             android:layout_gravity="center"
-            tools:srcCompat="@tools:sample/avatars" />
+            android:src="@drawable/pig1" />
     </FrameLayout>
 
     <FrameLayout
@@ -46,7 +46,7 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent">
         <TextView
-            android:id="@+id/frog_tale"
+            android:id="@+id/pig_tale"
             android:layout_width="275dp"
             android:layout_height="150dp"
             android:scrollbars="vertical"

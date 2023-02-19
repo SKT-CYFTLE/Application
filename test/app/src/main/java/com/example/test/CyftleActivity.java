@@ -28,6 +28,10 @@ public class CyftleActivity extends AppCompatActivity {
         TextView duckText = (TextView) findViewById(R.id.duck_text);
         ImageView frogImage = (ImageView) findViewById(R.id.frog_image);
         TextView frogText = (TextView) findViewById(R.id.frog_text);
+        ImageView rabbitImage = (ImageView) findViewById(R.id.rabbit_image);
+        TextView rabbitText = (TextView) findViewById(R.id.rabbit_text);
+        ImageView pigImage = (ImageView) findViewById(R.id.pig_image);
+        TextView pigText = (TextView) findViewById(R.id.pig_text);
         duckImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,6 +57,34 @@ public class CyftleActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent frogIntent = new Intent(CyftleActivity.this, ViewFrogActivity.class);
+                startActivity(frogIntent);
+            }
+        });
+        rabbitImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent frogIntent = new Intent(CyftleActivity.this, ViewRabbitActivity.class);
+                startActivity(frogIntent);
+            }
+        });
+        rabbitText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent frogIntent = new Intent(CyftleActivity.this, ViewRabbitActivity.class);
+                startActivity(frogIntent);
+            }
+        });
+        pigImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent frogIntent = new Intent(CyftleActivity.this, ViewPigActivity.class);
+                startActivity(frogIntent);
+            }
+        });
+        pigText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent frogIntent = new Intent(CyftleActivity.this, ViewPigActivity.class);
                 startActivity(frogIntent);
             }
         });
