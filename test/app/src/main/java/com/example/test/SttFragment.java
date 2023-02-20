@@ -36,7 +36,6 @@ public class SttFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 speechRecognizer = SpeechRecognizer.createSpeechRecognizer(getActivity()); // 새 SpeechRecognizer 를 만드는 팩토리 메서드
-//                speechRecognizer.setRecognitionListener(this); // 리스너 설정
                 speechRecognizer.startListening(intent); // 듣기 시작
             }
         });

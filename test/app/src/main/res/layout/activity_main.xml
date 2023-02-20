@@ -29,6 +29,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="82dp"
         android:fontFamily="@font/applesdgothicneoeb"
+        android:text="이제 뭐 할 거야?"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="33sp"
