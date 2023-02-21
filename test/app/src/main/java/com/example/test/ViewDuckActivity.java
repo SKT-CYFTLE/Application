@@ -30,10 +30,12 @@ public class ViewDuckActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         // 프래그먼트 리스트 생성
         List<Fragment> fragments = new ArrayList<>();
+        fragments.add(new SttFragment());
         fragments.add(new Duck1Fragment());
         fragments.add(new Duck2Fragment());
-        fragments.add(new SttFragment());
         fragments.add(new Duck3Fragment());
+        fragments.add(new Duck4Fragment());
+        fragments.add(new Duck5Fragment());
         // 페이저 생성
         pager = findViewById(R.id.pager);
         pagerAdapter = new DuckPagerAdapter(this, fragments);

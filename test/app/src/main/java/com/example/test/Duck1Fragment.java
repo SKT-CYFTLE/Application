@@ -1,7 +1,5 @@
 package com.example.test;
 
-import android.content.Context;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.text.method.ScrollingMovementMethod;
@@ -18,8 +16,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.google.gson.JsonObject;
@@ -31,9 +27,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -42,13 +39,14 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
-import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 public class Duck1Fragment extends Fragment {
 
-    private FastInterface api;
+    private TranslateInterface transapi;
+    private StoryInterface storyapi;
+    private String responseString;
 
     @Nullable
     @Override
@@ -82,6 +80,7 @@ public class Duck1Fragment extends Fragment {
 
         // textview 스크롤 가능하게 한다
         duck.setMovementMethod(new ScrollingMovementMethod());
+
         // Duck 이미지를 눌렀을 때 나오는 이벤트
         duck_image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,13 +88,25 @@ public class Duck1Fragment extends Fragment {
                 sendDataToServer("아기 오리가 집 나가는 동화 만들어 줘");
             }
         });
+
+        // timeout setting 해주기
+        OkHttpClient okHttpClient = new OkHttpClient().newBuilder()
+                .connectTimeout(60, TimeUnit.SECONDS)
+                .readTimeout(60, TimeUnit.SECONDS)
+                .writeTimeout(60, TimeUnit.SECONDS)
+                .build();
+
+
         // Retrofit으로 통신하기 위한 인스턴스 생성하기
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://20.214.190.71/")
+                .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+
         // api interface 인스턴스 생성
-        api = retrofit.create(FastInterface.class);
+        transapi = retrofit.create(TranslateInterface.class);
+        storyapi = retrofit.create(StoryInterface.class);
 
         return view;
     }
@@ -115,22 +126,17 @@ public class Duck1Fragment extends Fragment {
         }
         return super.onOptionsItemSelected(item);
     }
-    // Api 인터페이스
-    public interface FastInterface {
+    // TranslateApi 인터페이스
+    public interface TranslateInterface {
         @Headers({"Content-Type: application/json"})
         @POST("/translating/?lang=kor")
         Call<ResponseBody> sendText(@Body RequestBody requestBody);
     }
-    public class Message {
-        private String message;
-
-        public Message(String message) {
-            this.message = message;
-        }
-
-        public String getMessage() {
-            return message;
-        }
+    // Make Story 인터페이스
+    public interface StoryInterface {
+        @Headers({"Content-Type: application/json"})
+        @POST("/make_story/")
+        Call<ResponseBody> sendText(@Body RequestBody requestBody);
     }
     private void sendDataToServer(String text) {
         try{
@@ -143,17 +149,59 @@ public class Duck1Fragment extends Fragment {
             RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), jsonText);
 
             // 데이터 서버로 보내기
-            Call<ResponseBody> call = api.sendText(requestBody);
+            Call<ResponseBody> call = transapi.sendText(requestBody);
             call.enqueue(new Callback<ResponseBody>() {
                 @Override
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                     // 성공하면 해야할 반응
                     if(response.isSuccessful()) {
                         try {
-                            String responseString = response.body().string();
-                            Toast myToast = Toast.makeText(getActivity(),"Response from server: " + responseString, Toast.LENGTH_SHORT);
+                            responseString = response.body().string();
+                            sendResultToServer(responseString);
+                        }
+                        catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    else {
+                        Toast myToast = Toast.makeText(getActivity(),"에러", Toast.LENGTH_SHORT);
+                        myToast.show();
+                    }
+                }
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    // 실패 시
+                    Toast myToast = Toast.makeText(getActivity(),"실패", Toast.LENGTH_SHORT);
+                    myToast.show();
+                }
+            });
+        }
+        catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+    private void sendResultToServer(String text) {
+        try{
+            // json 파일 만들기
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("content", text);
+            // JSON 파일을 텍스트로 변환
+            String jsonText = jsonObject.toString();
+            // request body를 json 포맷 텍스트로 생성한다
+            RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), jsonText);
+
+            // 데이터 서버로 보내기
+            Call<ResponseBody> call = storyapi.sendText(requestBody);
+            call.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    // 성공하면 해야할 반응
+                    if(response.isSuccessful()) {
+                        try {
+                            String result = response.body().string();
+                            Toast myToast = Toast.makeText(getActivity(),"" + result, Toast.LENGTH_SHORT);
                             myToast.show();
-                            Log.d("TAG", "Response from server: " + responseString);
+
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
