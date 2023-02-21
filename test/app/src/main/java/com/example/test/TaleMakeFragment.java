@@ -16,14 +16,19 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.google.gson.JsonObject;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Interceptor;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -42,6 +47,7 @@ public class TaleMakeFragment extends Fragment {
     private String responseString;
     private SharedViewModel sharedViewModel;
 
+    // stt로 가져온 데이터 서버로 보내기
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -179,10 +185,10 @@ public class TaleMakeFragment extends Fragment {
                     if(response.isSuccessful()) {
                         try {
                             String result = response.body().string();
-                            Toast myToast = Toast.makeText(getActivity(),"" + result, Toast.LENGTH_SHORT);
+                            Toast myToast = Toast.makeText(getActivity(),"이야기가 다 만들어 졌어요!", Toast.LENGTH_SHORT);
                             myToast.show();
-                            Log.d("tag", "" + result);
 
+                            sharedViewModel.setLiveData(result);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }

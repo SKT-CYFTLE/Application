@@ -3,6 +3,7 @@ package com.example.test;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,9 +39,18 @@ public class ViewActivity extends AppCompatActivity {
         fragments.add(new Page5Fragment());
         // 페이저 생성
         pager = findViewById(R.id.pager);
+        pager.setOffscreenPageLimit(2);
         pagerAdapter = new CyftlePagerAdapter(this, fragments);
         pager.setAdapter(pagerAdapter);
 
+        pager.setPageTransformer(new ViewPager2.PageTransformer() {
+            @Override
+            public void transformPage(@NonNull View page, float position) {
+                final float normalizedPosition = Math.abs(Math.abs(position) - 1);
+                page.setScaleX(normalizedPosition / 2 + 0.5f);
+                page.setScaleY(normalizedPosition / 2 + 0.5f);
+            }
+        });
     }
     // 커스텀 툴바 xml에서 버튼을 불러오는 메소드
     @Override

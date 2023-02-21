@@ -1,12 +1,9 @@
 package com.example.test;
 
 import static android.speech.tts.TextToSpeech.ERROR;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.text.method.ScrollingMovementMethod;
@@ -15,11 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.Locale;
 
 public class DuckActivity extends AppCompatActivity {

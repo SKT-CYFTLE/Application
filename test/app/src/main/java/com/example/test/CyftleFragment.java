@@ -11,13 +11,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-
 import org.jetbrains.annotations.Nullable;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
 public class CyftleFragment extends Fragment {
 
@@ -71,11 +73,5 @@ public class CyftleFragment extends Fragment {
             mSttTextView.setText(text);
             sharedViewModel.setLiveData(text);
         }
-    }
-
-
-    // stt 결과를 받는 곳
-    public interface STTResultListener {
-        void onSTTResult(String result);
     }
 }
