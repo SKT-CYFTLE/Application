@@ -32,35 +32,12 @@
         <activity
             android:name=".AlarmActivity"
             android:exported="false" />
+        +
         <activity
-            android:name=".CyftleActivity"
-            android:exported="false" />+
-        <activity
-            android:name=".ViewDuckActivity"
+            android:name=".ViewActivity"
             android:exported="false" />
         <activity
-        android:name=".ZoomOutPageTransformer"
-        android:exported="false" />
-        <activity
-            android:name=".ViewFrogActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ViewRabbitActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ViewPigActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ViewGoldActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ViewFoxActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ViewTigerActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ViewBackFrogActivity"
+            android:name=".CyftleFragment"
             android:exported="false" />
     </application>
 

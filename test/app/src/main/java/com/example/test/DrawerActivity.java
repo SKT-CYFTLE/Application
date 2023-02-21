@@ -36,14 +36,14 @@ public class DrawerActivity extends AppCompatActivity {
         logo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent logoIntent = new Intent(DrawerActivity.this, CyftleActivity.class);
+                Intent logoIntent = new Intent(DrawerActivity.this, ViewActivity.class);
                 startActivity(logoIntent);
             }
         });
         text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent textIntent = new Intent(DrawerActivity.this, CyftleActivity.class);
+                Intent textIntent = new Intent(DrawerActivity.this, ViewActivity.class);
                 startActivity(textIntent);
             }
         });
