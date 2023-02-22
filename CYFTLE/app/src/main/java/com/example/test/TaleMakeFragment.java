@@ -18,15 +18,12 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.net.URLEncoder;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.MediaType;
@@ -45,28 +42,12 @@ import retrofit2.http.POST;
 public class TaleMakeFragment extends Fragment {
 
     private TranslateInterface transapi;
+    private TranslateInterface transapi2;
     private StoryInterface storyapi;
     private String responseString;
     private SharedViewModel sharedViewModel;
     private Button taleBtn;
     private String full;
-
-    public class Story {
-        public String full;
-        public String summarized;
-
-        public String get(String key) {
-            switch(key) {
-                case "full":
-                    return full;
-                case "summarized":
-                    return summarized;
-                default:
-                    return null;
-            }
-        }
-    }
-
 
     // stt로 가져온 데이터 서버로 보내기
     @Override
@@ -74,7 +55,7 @@ public class TaleMakeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
-        sharedViewModel.getLiveData().observe(getViewLifecycleOwner(), new Observer<String>() {
+        sharedViewModel.getTranslate().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
                 taleBtn = (Button) view.findViewById(R.id.talebtn);
@@ -96,9 +77,9 @@ public class TaleMakeFragment extends Fragment {
 
         // timeout setting 해주기
         OkHttpClient okHttpClient = new OkHttpClient().newBuilder()
-                .connectTimeout(60, TimeUnit.SECONDS)
-                .readTimeout(60, TimeUnit.SECONDS)
-                .writeTimeout(60, TimeUnit.SECONDS)
+                .connectTimeout(120, TimeUnit.SECONDS)
+                .readTimeout(120, TimeUnit.SECONDS)
+                .writeTimeout(120, TimeUnit.SECONDS)
                 .build();
 
         // Retrofit으로 통신하기 위한 인스턴스 생성하기
@@ -113,25 +94,6 @@ public class TaleMakeFragment extends Fragment {
         storyapi = retrofit.create(StoryInterface.class);
 
         return view;
-    }
-
-
-    // 커스텀 툴바 xml에서 버튼을 불러오는 메소드
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.alarm_title, menu);
-    }
-
-
-    // 커스텀 툴바 버튼이 눌렸을 때 구현 시킬 기능들
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.close:
-                getActivity().finish();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
 
@@ -194,7 +156,7 @@ public class TaleMakeFragment extends Fragment {
         }
     }
     private void sendResultToServer(String text) {
-        try{
+        try {
             // json 파일 만들기
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("content", text);
@@ -209,23 +171,63 @@ public class TaleMakeFragment extends Fragment {
                 @Override
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                     // 성공하면 해야할 반응
-                    if(response.isSuccessful()) {
+                    if (response.isSuccessful()) {
                         try {
                             String result = response.body().string();
-                            Toast myToast = Toast.makeText(getActivity(),"이야기가 다 만들어 졌어요!", Toast.LENGTH_SHORT);
+                            Toast myToast = Toast.makeText(getActivity(), "이야기가 다 만들어 졌어요!", Toast.LENGTH_SHORT);
                             myToast.show();
 
-                            Gson gson = new Gson();
-                            Story story = gson.fromJson(result, Story.class);
+                            String rest = result.replaceAll("^\"|\"$|\\\\", "");
+                            ObjectMapper objectMapper = new ObjectMapper();
+                            Map<String, Object> map = objectMapper.readValue(rest, Map.class);
+                            Object value = map.get("full");
 
-
-                            full = story.get("full");
-                            String summarized = story.get("summarized");
-                            Log.d("0", "" + summarized);
-                            Log.d("0", "" + full);
-
-                            sharedViewModel.setLiveData(full);
+                            full = value.toString();
+                            sendDataToServer(full);
+                            Log.d("tag", "" + full);
                         } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        Toast myToast = Toast.makeText(getActivity(), "에러", Toast.LENGTH_SHORT);
+                        myToast.show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    // 실패 시
+                    Toast myToast = Toast.makeText(getActivity(), "실패", Toast.LENGTH_SHORT);
+                    myToast.show();
+                }
+            });
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+    private void sendStoryToServer(String text) {
+        try{
+            // json 파일 만들기
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("content", text);
+            // JSON 파일을 텍스트로 변환
+            String jsonText = jsonObject.toString();
+            // request body를 json 포맷 텍스트로 생성한다
+            RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), jsonText);
+
+            // 데이터 서버로 보내기
+            Call<ResponseBody> call = transapi2.sendText(requestBody);
+            call.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    // 성공하면 해야할 반응
+                    if(response.isSuccessful()) {
+                        try {
+                            responseString = response.body().string();
+
+                            sharedViewModel.setStory(responseString);
+                        }
+                        catch (IOException e) {
                             e.printStackTrace();
                         }
                     }

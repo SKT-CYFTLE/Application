@@ -71,7 +71,7 @@ public class CyftleFragment extends Fragment {
             String text = results.get(0);
 
             mSttTextView.setText(text);
-            sharedViewModel.setLiveData(text);
+            sharedViewModel.setTranslate(text);
         }
     }
 }
