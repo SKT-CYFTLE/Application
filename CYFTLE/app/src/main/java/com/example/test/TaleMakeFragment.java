@@ -218,6 +218,8 @@ public class TaleMakeFragment extends Fragment {
                             sharedViewModel.setStory(full);
 
                             sendStoryToServer(p_id, c_id);
+
+
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -288,16 +290,22 @@ public class TaleMakeFragment extends Fragment {
 
                             p_id = map.get("p_id");
                             c_id = map.get("c_id");
+
+                            Log.d("tag", "Log-taehyeong-1");
                             ArrayList<String> summArray = object.convertValue(sum, new TypeReference<ArrayList<String>>() {});
 
-//                            sendSummaryToServer(summArray.get(0));
+                            sendSummaryToServer(summArray.get(0));
+                            sendSummaryToServer(summArray.get(1));
+                            sendSummaryToServer(summArray.get(2));
+                            sendSummaryToServer(summArray.get(3));
+                            sendSummaryToServer(summArray.get(4));
 //                            sharedViewModel.setImage2(summArray.get(1));
 //                            sharedViewModel.setImage3(summArray.get(2));
 //                            sharedViewModel.setImage4(summArray.get(3));
 //                            sharedViewModel.setImage5(summArray.get(4));
 //                            sharedViewModel.setArr(summArray);
-                            
 
+                            Log.d("tag", "Log-taehyeong-2");
 
                             Log.d("tag", "데이터 타입:" + summArray.get(0).getClass());
                             Log.d("tag", "요약1:" + summArray.get(0));
