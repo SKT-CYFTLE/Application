@@ -3,9 +3,6 @@ package com.example.test;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -17,12 +14,19 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.google.gson.Gson;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.JsonObject;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -41,13 +45,15 @@ import retrofit2.http.POST;
 
 public class TaleMakeFragment extends Fragment {
 
-    private TranslateInterface transapi;
-    private TranslateInterface transapi2;
+    private KorTOEngInterface korapi;
     private StoryInterface storyapi;
-    private String responseString;
+    private SummarizeInterface summarizeapi;
+    private DalleInterface dalleapi;
     private SharedViewModel sharedViewModel;
     private Button taleBtn;
     private String full;
+    private Object p_id;
+    private Object c_id;
 
     // stt로 가져온 데이터 서버로 보내기
     @Override
@@ -55,14 +61,14 @@ public class TaleMakeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
-        sharedViewModel.getTranslate().observe(getViewLifecycleOwner(), new Observer<String>() {
+        sharedViewModel.getStt().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
                 taleBtn = (Button) view.findViewById(R.id.talebtn);
                 taleBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        sendDataToServer(s);
+                        sendKorToServer(s);
                     }
                 });
             }
@@ -77,9 +83,9 @@ public class TaleMakeFragment extends Fragment {
 
         // timeout setting 해주기
         OkHttpClient okHttpClient = new OkHttpClient().newBuilder()
-                .connectTimeout(120, TimeUnit.SECONDS)
-                .readTimeout(120, TimeUnit.SECONDS)
-                .writeTimeout(120, TimeUnit.SECONDS)
+                .connectTimeout(3000, TimeUnit.SECONDS)
+                .readTimeout(3000, TimeUnit.SECONDS)
+                .writeTimeout(3000, TimeUnit.SECONDS)
                 .build();
 
         // Retrofit으로 통신하기 위한 인스턴스 생성하기
@@ -90,49 +96,67 @@ public class TaleMakeFragment extends Fragment {
                 .build();
 
         // api interface 인스턴스 생성
-        transapi = retrofit.create(TranslateInterface.class);
+        korapi = retrofit.create(KorTOEngInterface.class);
         storyapi = retrofit.create(StoryInterface.class);
+        summarizeapi = retrofit.create(SummarizeInterface.class);
+        dalleapi = retrofit.create(DalleInterface.class);
 
         return view;
     }
 
 
-    // TranslateApi 인터페이스
-    public interface TranslateInterface {
+    // 한국어 영어로 변환해주는 인터페이스
+    public interface KorTOEngInterface {
         @Headers({"Content-Type: application/json"})
         @POST("/translating/?lang=kor")
         Call<ResponseBody> sendText(@Body RequestBody requestBody);
     }
 
 
+
     // Make Story 인터페이스
     public interface StoryInterface {
         @Headers({"Content-Type: application/json"})
-        @POST("/make_story/")
+        @POST("/make_story/children")
         Call<ResponseBody> sendText(@Body RequestBody requestBody);
     }
 
 
-    private void sendDataToServer(String text) {
+    // Story Summarize 인터페이스
+    public interface SummarizeInterface {
+        @Headers({"Content-Type: application/json"})
+        @POST("/story_summarize/")
+        Call<ResponseBody> sendText(@Body RequestBody requestBody);
+    }
+
+
+    // Dall-e 인터페이스
+    public interface DalleInterface {
+        @Headers({"Content-Type: application/json"})
+        @POST("/make_image/")
+        Call<ResponseBody> sendText(@Body RequestBody requestBody);
+    }
+
+    private void sendKorToServer(String stt) {
         try{
             // json 파일 만들기
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("content", text);
+            jsonObject.put("content", stt);
             // JSON 파일을 텍스트로 변환
-            String jsonText = jsonObject.toString();
+            String jsonStt = jsonObject.toString();
             // request body를 json 포맷 텍스트로 생성한다
-            RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), jsonText);
+            RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), jsonStt);
 
             // 데이터 서버로 보내기
-            Call<ResponseBody> call = transapi.sendText(requestBody);
+            Call<ResponseBody> call = korapi.sendText(requestBody);
             call.enqueue(new Callback<ResponseBody>() {
                 @Override
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                     // 성공하면 해야할 반응
                     if(response.isSuccessful()) {
                         try {
-                            responseString = response.body().string();
-                            sendResultToServer(responseString);
+                            String result = response.body().string();
+                            sendTransToServer(result);
                         }
                         catch (IOException e) {
                             e.printStackTrace();
@@ -155,15 +179,15 @@ public class TaleMakeFragment extends Fragment {
             e.printStackTrace();
         }
     }
-    private void sendResultToServer(String text) {
+    private void sendTransToServer(String trans) {
         try {
             // json 파일 만들기
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("content", text);
+            jsonObject.put("content", trans);
             // JSON 파일을 텍스트로 변환
-            String jsonText = jsonObject.toString();
+            String jsonTrans = jsonObject.toString();
             // request body를 json 포맷 텍스트로 생성한다
-            RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), jsonText);
+            RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), jsonTrans);
 
             // 데이터 서버로 보내기
             Call<ResponseBody> call = storyapi.sendText(requestBody);
@@ -177,14 +201,23 @@ public class TaleMakeFragment extends Fragment {
                             Toast myToast = Toast.makeText(getActivity(), "이야기가 다 만들어 졌어요!", Toast.LENGTH_SHORT);
                             myToast.show();
 
-                            String rest = result.replaceAll("^\"|\"$|\\\\", "");
+                            Log.d("tag", "" + result);
+
+                            String rest = result.replaceAll("^\"|\"$", "")
+                                    .replaceAll("\\\\\"", "\"")
+                                    .replaceAll("\\\\\\\\n\\\\\\\\n", "**")
+                                    .replaceAll("\\\\\\\\", "");
                             ObjectMapper objectMapper = new ObjectMapper();
                             Map<String, Object> map = objectMapper.readValue(rest, Map.class);
                             Object value = map.get("full");
 
+                            p_id = map.get("p_id");
+                            c_id = map.get("c_id");
+
                             full = value.toString();
-                            sendDataToServer(full);
-                            Log.d("tag", "" + full);
+                            sharedViewModel.setStory(full);
+
+                            sendStoryToServer(p_id, c_id);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -205,27 +238,118 @@ public class TaleMakeFragment extends Fragment {
             e.printStackTrace();
         }
     }
-    private void sendStoryToServer(String text) {
+    private void sendStoryToServer(Object pid, Object cid) {
         try{
             // json 파일 만들기
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("content", text);
+            jsonObject.put("p_id", pid);
+            jsonObject.put("c_id", cid);
             // JSON 파일을 텍스트로 변환
-            String jsonText = jsonObject.toString();
+            String jsonStory = jsonObject.toString();
             // request body를 json 포맷 텍스트로 생성한다
-            RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), jsonText);
+            RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), jsonStory);
 
             // 데이터 서버로 보내기
-            Call<ResponseBody> call = transapi2.sendText(requestBody);
+            Call<ResponseBody> call = summarizeapi.sendText(requestBody);
             call.enqueue(new Callback<ResponseBody>() {
                 @Override
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                     // 성공하면 해야할 반응
                     if(response.isSuccessful()) {
                         try {
-                            responseString = response.body().string();
+                            String result = response.body().string();
 
-                            sharedViewModel.setStory(responseString);
+                            Log.d("tag", "" + result);
+
+                            String summ = result.replaceAll("^\"|\"$", "")
+                                    .replaceAll("\\\\\"summarized\\\\", "\"summarized")
+                                    .replaceAll("\\\\\"", "\"")
+//                                    .replaceAll("\"\"[,]", "")
+                                    .replaceAll("\\\\\\\\", "")
+                                    .replaceAll("\"\"","")
+                                    .replaceAll(" ,", "");
+
+                            Log.d("tag", "" + summ);
+                            ObjectMapper object = new ObjectMapper();
+                            Map<String, Object> map = object.readValue(summ, Map.class);
+                            Object sum = map.get("summarized");
+                            String suma = sum.toString();
+//                            try {
+//                                JSONObject json = new JSONObject(suma);
+//                                JSONArray valueArray = json.getJSONArray("summarized");
+//
+//                                for(int i = 0; i < valueArray.length(); i++) {
+//                                    String value = valueArray.getString(i);
+//                                    Log.d("tag", "value:" + value);
+//                                }
+//                            } catch (JSONException e) {
+//                                e.printStackTrace();
+//                            }
+
+                            p_id = map.get("p_id");
+                            c_id = map.get("c_id");
+                            ArrayList<String> summArray = object.convertValue(sum, new TypeReference<ArrayList<String>>() {});
+
+//                            sendSummaryToServer(summArray.get(0));
+//                            sharedViewModel.setImage2(summArray.get(1));
+//                            sharedViewModel.setImage3(summArray.get(2));
+//                            sharedViewModel.setImage4(summArray.get(3));
+//                            sharedViewModel.setImage5(summArray.get(4));
+//                            sharedViewModel.setArr(summArray);
+                            
+
+
+                            Log.d("tag", "데이터 타입:" + summArray.get(0).getClass());
+                            Log.d("tag", "요약1:" + summArray.get(0));
+                            Log.d("tag", "요약2:" + summArray.get(1));
+                            Log.d("tag", "요약3:" + summArray.get(2));
+                            Log.d("tag", "요약4:" + summArray.get(3));
+                            Log.d("tag", "요약5:" + summArray.get(4));
+                        }
+                        catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    else {
+                        Toast myToast = Toast.makeText(getActivity(),"에러", Toast.LENGTH_SHORT);
+                        myToast.show();
+                    }
+                }
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    // 실패 시
+                    Toast myToast = Toast.makeText(getActivity(),"실패", Toast.LENGTH_SHORT);
+                    myToast.show();
+                }
+            });
+        }
+        catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+    private void sendSummaryToServer(String summary) {
+        try{
+            // json 파일 만들기
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("content", summary);
+            // JSON 파일을 텍스트로 변환
+            String jsonStt = jsonObject.toString();
+            // request body를 json 포맷 텍스트로 생성한다
+            RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), jsonStt);
+
+            // 데이터 서버로 보내기
+            Call<ResponseBody> call = dalleapi.sendText(requestBody);
+            call.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    // 성공하면 해야할 반응
+                    if(response.isSuccessful()) {
+                        try {
+                            String result = response.body().string();
+                            ObjectMapper object = new ObjectMapper();
+                            JsonNode root = object.readTree(result);
+                            String url = root.get("url").asText();
+                            Log.d("tag", "" + url);
                         }
                         catch (IOException e) {
                             e.printStackTrace();
