@@ -1,0 +1,986 @@
+[
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxxhdpi_settings.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxxhdpi\\settings.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxhdpi_splash_foreground.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxhdpi\\splash_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_button.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\button.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxhdpi_bell.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxhdpi\\bell.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-hdpi_splash.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-hdpi\\splash.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxxhdpi_logo_foreground.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxxhdpi\\logo_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_qurious_character.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\qurious_character.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-anydpi-v26_menu.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-anydpi-v26\\menu.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xhdpi_logo_foreground.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xhdpi\\logo_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-hdpi_logo_round.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-hdpi\\logo_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\xml\\backup_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-hdpi_close_round.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-hdpi\\close_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-mdpi_more_foreground.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-mdpi\\more_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-mdpi_logo_round.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-mdpi\\logo_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_b3.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\b3.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_musicrecommend.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\musicrecommend.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxxhdpi_settings_foreground.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxxhdpi\\settings_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xhdpi_logo.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xhdpi\\logo.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-anydpi-v26_logo_round.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-anydpi-v26\\logo_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\layout_activity_alarm.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\layout\\activity_alarm.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\layout_fragment_talemake.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\layout\\fragment_talemake.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-hdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-hdpi_settings.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-hdpi\\settings.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxxhdpi_menu_round.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxxhdpi\\menu_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxhdpi_more_foreground.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxhdpi\\more_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-mdpi_menu.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-mdpi\\menu.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xhdpi_close_round.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xhdpi\\close_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xhdpi_splash_round.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xhdpi\\splash_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-hdpi_bell_foreground.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-hdpi\\bell_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_tale_character.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\tale_character.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_drawable_b3.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\drawable_b3.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxxhdpi_splash_round.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxxhdpi\\splash_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xhdpi_splash_foreground.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xhdpi\\splash_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxxhdpi_bell_foreground.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxxhdpi\\bell_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_classic.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\classic.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-mdpi_edit.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-mdpi\\edit.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xhdpi_menu_foreground.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xhdpi\\menu_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable-v24_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable-v24\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_tutorial.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\tutorial.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_b1.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\b1.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxhdpi_settings_round.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxhdpi\\settings_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xhdpi_close.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xhdpi\\close.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-mdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\layout_fragment_page5.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\layout\\fragment_page5.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_execise.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\execise.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxxhdpi_menu.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxxhdpi\\menu.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-hdpi_logo_foreground.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-hdpi\\logo_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_menu_background.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\menu_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-mdpi_close_round.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-mdpi\\close_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_game.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\game.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\raw_intro.mp3.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\raw\\intro.mp3"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_drawing_character.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\drawing_character.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-hdpi_settings_foreground.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-hdpi\\settings_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-mdpi_close_foreground.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-mdpi\\close_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\layout_fragment_page3.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\layout\\fragment_page3.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-mdpi_settings_round.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-mdpi\\settings_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-hdpi_more.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-hdpi\\more.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_rogo6.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\rogo6.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-anydpi-v26_edit_round.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-anydpi-v26\\edit_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\menu_title.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\menu\\title.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-hdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_settings_background.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\settings_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\raw_loading.json.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\raw\\loading.json"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_drawable_b1.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\drawable_b1.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxxhdpi_splash_foreground.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxxhdpi\\splash_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_duck1.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\duck1.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-hdpi_menu.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-hdpi\\menu.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\raw_retry.mp3.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\raw\\retry.mp3"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxhdpi_close_round.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxhdpi\\close_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_baseline_keyboard_alt_24.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\baseline_keyboard_alt_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_drawable_b2.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\drawable_b2.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxxhdpi_close_foreground.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxxhdpi\\close_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxhdpi_menu_round.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxhdpi\\menu_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-mdpi_bell_foreground.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-mdpi\\bell_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxxhdpi_bell_round.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxxhdpi\\bell_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxxhdpi_settings_round.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxxhdpi\\settings_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxhdpi_logo.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxhdpi\\logo.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\menu_alarm_title.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\menu\\alarm_title.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-mdpi_splash.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-mdpi\\splash.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_rice.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\rice.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-anydpi-v26_more_round.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-anydpi-v26\\more_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_bell_background.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\bell_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-hdpi_edit.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-hdpi\\edit.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-anydpi-v26_bell.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-anydpi-v26\\bell.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\menu_drawer_title.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\menu\\drawer_title.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\anim_anim_slide_in_right.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\anim\\anim_slide_in_right.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_frog1.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\frog1.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xhdpi_close_foreground.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xhdpi\\close_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_edit_foreground.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\edit_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_dialog.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\dialog.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_pig1.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\pig1.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_winter.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\winter.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-anydpi-v26_splash_round.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-anydpi-v26\\splash_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xhdpi_splash.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xhdpi\\splash.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxxhdpi_bell.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxxhdpi\\bell.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxhdpi_logo_foreground.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxhdpi\\logo_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-mdpi_bell.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-mdpi\\bell.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xhdpi_settings.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xhdpi\\settings.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_ant.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\ant.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\layout_fragment_error.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\layout\\fragment_error.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\layout_fragment_page4.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\layout\\fragment_page4.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxhdpi_settings_foreground.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxhdpi\\settings_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xhdpi_logo_round.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xhdpi\\logo_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-anydpi-v26_bell_round.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-anydpi-v26\\bell_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_gold.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\gold.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-mdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxxhdpi_more_round.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxxhdpi\\more_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_b2.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\b2.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xhdpi_bell_foreground.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xhdpi\\bell_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\anim_anim_slide_out_right.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\anim\\anim_slide_out_right.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_ad.jpg.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\ad.jpg"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_alarm.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\alarm.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\xml\\data_extraction_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_track_selector.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\track_selector.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_qupid.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\qupid.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\layout_activity_view.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\layout\\activity_view.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\layout_fragment_cyftle.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\layout\\fragment_cyftle.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_cat.jpg.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\cat.jpg"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxhdpi_bell_foreground.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxhdpi\\bell_foreground.png"
+    },
+    {
+        "merged": "com.example.test.app-merged_res-30:/layout_fragment_loading.xml.flat",
+        "source": "com.example.test.app-main-32:/layout/fragment_loading.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-anydpi-v26_close.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-anydpi-v26\\close.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_baseline_keyboard_voice_24.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\baseline_keyboard_voice_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-mdpi_settings_foreground.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-mdpi\\settings_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxxhdpi_edit_round.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxxhdpi\\edit_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-anydpi-v26_settings.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-anydpi-v26\\settings.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_calender.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\calender.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-hdpi_more_foreground.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-hdpi\\more_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_tmap.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\tmap.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxxhdpi_logo.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxxhdpi\\logo.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_more_background.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\more_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_photo.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\photo.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxxhdpi_close.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxxhdpi\\close.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-mdpi_more.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-mdpi\\more.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_thumb_selector.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\thumb_selector.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-anydpi-v26_splash.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-anydpi-v26\\splash.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-anydpi-v26_close_round.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-anydpi-v26\\close_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxhdpi_settings.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxhdpi\\settings.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\font_applesdgothicneoeb.ttf.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\font\\applesdgothicneoeb.ttf"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_backfrog1.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\backfrog1.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxxhdpi_splash.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxxhdpi\\splash.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\layout_fragment_loading.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\layout\\fragment_loading.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_pig.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\pig.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-anydpi-v26_logo.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-anydpi-v26\\logo.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxhdpi_splash.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxhdpi\\splash.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xhdpi_bell.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xhdpi\\bell.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-hdpi_logo.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-hdpi\\logo.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-mdpi_settings.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-mdpi\\settings.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_gold1.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\gold1.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-mdpi_splash_round.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-mdpi\\splash_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-hdpi_splash_foreground.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-hdpi\\splash_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\anim_anim_slide_out_left.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\anim\\anim_slide_out_left.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxhdpi_logo_round.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxhdpi\\logo_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_bg_switch.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\bg_switch.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_backfrog.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\backfrog.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_love_character.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\love_character.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxxhdpi_close_round.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxxhdpi\\close_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_duck.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\duck.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_rabbit.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\rabbit.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-hdpi_menu_round.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-hdpi\\menu_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-anydpi-v26_settings_round.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-anydpi-v26\\settings_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-mdpi_menu_foreground.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-mdpi\\menu_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-mdpi_logo.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-mdpi\\logo.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxhdpi_more_round.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxhdpi\\more_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-mdpi_close.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-mdpi\\close.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_frog.jpg.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\frog.jpg"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_adot_top.jpg.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\adot_top.jpg"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-hdpi_close.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-hdpi\\close.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxhdpi_splash_round.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxhdpi\\splash_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-anydpi-v26_menu_round.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-anydpi-v26\\menu_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxhdpi_menu_foreground.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxhdpi\\menu_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-mdpi_menu_round.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-mdpi\\menu_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxxhdpi_edit.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxxhdpi\\edit.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xhdpi_edit_round.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xhdpi\\edit_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_close_background.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\close_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-mdpi_more_round.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-mdpi\\more_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxxhdpi_more_foreground.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxxhdpi\\more_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxxhdpi_more.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxxhdpi\\more.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-hdpi_more_round.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-hdpi\\more_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xhdpi_more_foreground.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xhdpi\\more_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\raw_wait.mp3.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\raw\\wait.mp3"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xhdpi_settings_foreground.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xhdpi\\settings_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\raw_done.mp3.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\raw\\done.mp3"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\layout_activity_duck.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\layout\\activity_duck.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_fox.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\fox.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xhdpi_menu_round.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xhdpi\\menu_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\layout_fragment_done.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\layout\\fragment_done.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-hdpi_settings_round.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-hdpi\\settings_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_happy_character.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\happy_character.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_background.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\background.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-hdpi_bell_round.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-hdpi\\bell_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\anim_anim_none.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\anim\\anim_none.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_logo_background.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\logo_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxhdpi_edit_round.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxhdpi\\edit_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xhdpi_settings_round.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xhdpi\\settings_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxhdpi_bell_round.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxhdpi\\bell_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_rabbit1.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\rabbit1.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-anydpi-v33_ic_launcher.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-anydpi-v33\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxhdpi_close_foreground.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxhdpi\\close_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_what.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\what.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxhdpi_menu.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxhdpi\\menu.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-anydpi-v26_edit.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-anydpi-v26\\edit.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_splash_character.jpg.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\splash_character.jpg"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\layout_fragment_page2.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\layout\\fragment_page2.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-hdpi_close_foreground.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-hdpi\\close_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-mdpi_splash_foreground.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-mdpi\\splash_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-hdpi_splash_round.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-hdpi\\splash_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_fox1.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\fox1.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_error_character.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\error_character.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxhdpi_more.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxhdpi\\more.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-hdpi_bell.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-hdpi\\bell.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxxhdpi_menu_foreground.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxxhdpi\\menu_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xhdpi_bell_round.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xhdpi\\bell_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\layout_activity_drawer.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\layout\\activity_drawer.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_tv.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\tv.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-mdpi_edit_round.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-mdpi\\edit_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxxhdpi_logo_round.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxxhdpi\\logo_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-anydpi-v26_more.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-anydpi-v26\\more.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_alarm_radius.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\alarm_radius.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_baseline_refresh_24.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\baseline_refresh_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xhdpi_more_round.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xhdpi\\more_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_orange_alarm.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\orange_alarm.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxhdpi_edit.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxhdpi\\edit.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-mdpi_logo_foreground.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-mdpi\\logo_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_tiger.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\tiger.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xxhdpi_close.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xxhdpi\\close.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xhdpi_menu.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xhdpi\\menu.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-mdpi_bell_round.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-mdpi\\bell_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xhdpi_edit.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xhdpi\\edit.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_routine.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\routine.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\anim_anim_slide_in_left.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\anim\\anim_slide_in_left.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\layout_activity_splash.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\layout\\activity_splash.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-hdpi_menu_foreground.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-hdpi\\menu_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-hdpi_edit_round.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-hdpi\\edit_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\layout_fragment_page1.xml.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\layout\\fragment_page1.xml"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\drawable_tiger1.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\drawable\\tiger1.png"
+    },
+    {
+        "merged": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-merged_res-30:\\mipmap-xhdpi_more.png.flat",
+        "source": "C:\\Users\\gesta\\.gradle\\daemon\\7.5\\com.example.test.app-main-32:\\mipmap-xhdpi\\more.png"
+    }
+]
