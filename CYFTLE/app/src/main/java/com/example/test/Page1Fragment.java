@@ -16,16 +16,13 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.MediaType;
@@ -45,9 +42,10 @@ import retrofit2.http.POST;
 public class Page1Fragment extends Fragment {
 
     private TextView duck;
+    private ImageView duck_image;
     private SharedViewModel sharedViewModel;
     private EngToKorInterface engapi;
-    private DalleInterface dalleapi;
+    private String url;
 
     // stt로 가져온 데이터 서버로 보내기
     @Override
@@ -61,12 +59,15 @@ public class Page1Fragment extends Fragment {
                 sendEngToServer(s);
             }
         });
-//        sharedViewModel.getArr().observe(getViewLifecycleOwner(), new Observer<ArrayList<String>>() {
-//            @Override
-//            public void onChanged(ArrayList<String> ar) {
-//                sendSummaryToServer(ar.get(0));
-//            }
-//        });
+        sharedViewModel.getArr().observe(getViewLifecycleOwner(), new Observer<List<String>>() {
+            @Override
+            public void onChanged(List<String> urlList) {
+                url = urlList.get(0);
+
+                duck_image = view.findViewById(R.id.ducktale_image);
+                Picasso.get().load(url).into(duck_image);
+            }
+        });
     }
 
     @Nullable
@@ -76,11 +77,10 @@ public class Page1Fragment extends Fragment {
 
         sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
 
-        ImageView duck_image = (ImageView) view.findViewById(R.id.ducktale_image);
-
         duck = (TextView) view.findViewById(R.id.duck_tale);
         // textview 스크롤 가능하게 한다
         duck.setMovementMethod(new ScrollingMovementMethod());
+
 
         // timeout setting 해주기
         OkHttpClient okHttpClient = new OkHttpClient().newBuilder()
@@ -97,7 +97,6 @@ public class Page1Fragment extends Fragment {
                 .build();
 
         engapi = retrofit.create(EngToKorInterface.class);
-        dalleapi = retrofit.create(DalleInterface.class);
 
         return view;
     }
@@ -110,12 +109,6 @@ public class Page1Fragment extends Fragment {
         Call<ResponseBody> sendText(@Body RequestBody requestBody);
     }
 
-    // Dall-e 인터페이스
-    public interface DalleInterface {
-        @Headers({"Content-Type: application/json"})
-        @POST("/make_image/")
-        Call<ResponseBody> sendText(@Body RequestBody requestBody);
-    }
 
 
     private void sendEngToServer(String story) {
@@ -152,51 +145,6 @@ public class Page1Fragment extends Fragment {
                             sharedViewModel.setText3(story[2]);
                             sharedViewModel.setText4(story[3]);
                             sharedViewModel.setText5(story[4]);
-                        }
-                        catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                    else {
-                        Toast myToast = Toast.makeText(getActivity(),"에러", Toast.LENGTH_SHORT);
-                        myToast.show();
-                    }
-                }
-                @Override
-                public void onFailure(Call<ResponseBody> call, Throwable t) {
-                    // 실패 시
-                    Toast myToast = Toast.makeText(getActivity(),"실패", Toast.LENGTH_SHORT);
-                    myToast.show();
-                }
-            });
-        }
-        catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
-    private void sendSummaryToServer(String summary) {
-        try{
-            // json 파일 만들기
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("content", summary);
-            // JSON 파일을 텍스트로 변환
-            String jsonStt = jsonObject.toString();
-            // request body를 json 포맷 텍스트로 생성한다
-            RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), jsonStt);
-
-            // 데이터 서버로 보내기
-            Call<ResponseBody> call = dalleapi.sendText(requestBody);
-            call.enqueue(new Callback<ResponseBody>() {
-                @Override
-                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                    // 성공하면 해야할 반응
-                    if(response.isSuccessful()) {
-                        try {
-                            String result = response.body().string();
-                            ObjectMapper object = new ObjectMapper();
-                            JsonNode root = object.readTree(result);
-                            String url = root.get("url").asText();
-                            Log.d("tag", "" + url);
                         }
                         catch (IOException e) {
                             e.printStackTrace();

@@ -18,9 +18,6 @@ import androidx.lifecycle.ViewModelProvider;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.JsonObject;
-
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -54,6 +51,8 @@ public class TaleMakeFragment extends Fragment {
     private String full;
     private Object p_id;
     private Object c_id;
+    private List<String> urlList = new ArrayList<>();
+    private LoadingFragment loadingFragment = new LoadingFragment();
 
     // stt로 가져온 데이터 서버로 보내기
     @Override
@@ -69,6 +68,8 @@ public class TaleMakeFragment extends Fragment {
                     @Override
                     public void onClick(View v) {
                         sendKorToServer(s);
+
+                        loadingFragment.show(getFragmentManager(), "loading");
                     }
                 });
             }
@@ -163,8 +164,9 @@ public class TaleMakeFragment extends Fragment {
                         }
                     }
                     else {
-                        Toast myToast = Toast.makeText(getActivity(),"에러", Toast.LENGTH_SHORT);
-                        myToast.show();
+                        loadingFragment.dismiss();
+                        ErrorFragment errorFragment = new ErrorFragment();
+                        errorFragment.show(getFragmentManager(), "error");
                     }
                 }
                 @Override
@@ -222,8 +224,9 @@ public class TaleMakeFragment extends Fragment {
                             e.printStackTrace();
                         }
                     } else {
-                        Toast myToast = Toast.makeText(getActivity(), "에러", Toast.LENGTH_SHORT);
-                        myToast.show();
+                        loadingFragment.dismiss();
+                        ErrorFragment errorFragment = new ErrorFragment();
+                        errorFragment.show(getFragmentManager(), "error");
                     }
                 }
 
@@ -259,12 +262,9 @@ public class TaleMakeFragment extends Fragment {
                         try {
                             String result = response.body().string();
 
-                            Log.d("tag", "" + result);
-
                             String summ = result.replaceAll("^\"|\"$", "")
                                     .replaceAll("\\\\\"summarized\\\\", "\"summarized")
                                     .replaceAll("\\\\\"", "\"")
-//                                    .replaceAll("\"\"[,]", "")
                                     .replaceAll("\\\\\\\\", "")
                                     .replaceAll("\"\"","")
                                     .replaceAll(" ,", "");
@@ -274,32 +274,18 @@ public class TaleMakeFragment extends Fragment {
                             Map<String, Object> map = object.readValue(summ, Map.class);
                             Object sum = map.get("summarized");
                             String suma = sum.toString();
-//                            try {
-//                                JSONObject json = new JSONObject(suma);
-//                                JSONArray valueArray = json.getJSONArray("summarized");
-//
-//                                for(int i = 0; i < valueArray.length(); i++) {
-//                                    String value = valueArray.getString(i);
-//                                    Log.d("tag", "value:" + value);
-//                                }
-//                            } catch (JSONException e) {
-//                                e.printStackTrace();
-//                            }
+
 
                             p_id = map.get("p_id");
                             c_id = map.get("c_id");
                             ArrayList<String> summArray = object.convertValue(sum, new TypeReference<ArrayList<String>>() {});
 
-//                            sendSummaryToServer(summArray.get(0));
-//                            sharedViewModel.setImage2(summArray.get(1));
-//                            sharedViewModel.setImage3(summArray.get(2));
-//                            sharedViewModel.setImage4(summArray.get(3));
-//                            sharedViewModel.setImage5(summArray.get(4));
-//                            sharedViewModel.setArr(summArray);
-                            
+                            sendSummaryToServer(summArray.get(0));
+                            sendSummaryToServer(summArray.get(1));
+                            sendSummaryToServer(summArray.get(2));
+                            sendSummaryToServer(summArray.get(3));
+                            sendSummaryToServer(summArray.get(4));
 
-
-                            Log.d("tag", "데이터 타입:" + summArray.get(0).getClass());
                             Log.d("tag", "요약1:" + summArray.get(0));
                             Log.d("tag", "요약2:" + summArray.get(1));
                             Log.d("tag", "요약3:" + summArray.get(2));
@@ -311,8 +297,9 @@ public class TaleMakeFragment extends Fragment {
                         }
                     }
                     else {
-                        Toast myToast = Toast.makeText(getActivity(),"에러", Toast.LENGTH_SHORT);
-                        myToast.show();
+                        loadingFragment.dismiss();
+                        ErrorFragment errorFragment = new ErrorFragment();
+                        errorFragment.show(getFragmentManager(), "error");
                     }
                 }
                 @Override
@@ -346,18 +333,29 @@ public class TaleMakeFragment extends Fragment {
                     if(response.isSuccessful()) {
                         try {
                             String result = response.body().string();
+
                             ObjectMapper object = new ObjectMapper();
                             JsonNode root = object.readTree(result);
                             String url = root.get("url").asText();
-                            Log.d("tag", "" + url);
+
+                            urlList.add(url);
+
+                            if (urlList.size() == 5){
+                                sharedViewModel.setArr(urlList);
+
+                                loadingFragment.dismiss();
+                                DoneFragment doneFragment = new DoneFragment();
+                                doneFragment.show(getFragmentManager(), "done");
+                            } 
                         }
                         catch (IOException e) {
                             e.printStackTrace();
                         }
                     }
                     else {
-                        Toast myToast = Toast.makeText(getActivity(),"에러", Toast.LENGTH_SHORT);
-                        myToast.show();
+                        loadingFragment.dismiss();
+                        ErrorFragment errorFragment = new ErrorFragment();
+                        errorFragment.show(getFragmentManager(), "error");
                     }
                 }
                 @Override

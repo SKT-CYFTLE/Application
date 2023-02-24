@@ -5,10 +5,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     };
     private List<Integer> usedIndices = new ArrayList<>();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,8 +45,20 @@ public class MainActivity extends AppCompatActivity {
         // 툴바의 타이틀을 삭제 하는 것
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
+        ArrayList<Integer> imageList = new ArrayList<>();
+        imageList.add(R.drawable.classic);
+        imageList.add(R.drawable.execise);
+        imageList.add(R.drawable.rice);
+        imageList.add(R.drawable.what);
+        imageList.add(R.drawable.winter);
+        imageList.add(R.drawable.happy_character);
+
+        ImageView image = (ImageView) findViewById(R.id.image);
         // 랜덤 텍스트 구현
         TextView txt = (TextView) findViewById(R.id.txt);
+
+        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.intro);
+        mediaPlayer.start();
 
         // 플로팅 버튼
         FloatingActionButton fltButton = (FloatingActionButton) findViewById(R.id.floating);
@@ -53,6 +68,19 @@ public class MainActivity extends AppCompatActivity {
                 int index = getRandomIndex();
                 // Retrieve the phrase associated with the index
                 String phrase = phrases[index];
+                if (index == 0) {
+                    image.setImageResource(imageList.get(4));
+                } else if (index == 2) {
+                    image.setImageResource(imageList.get(0));
+                } else if (index == 3) {
+                    image.setImageResource(imageList.get(1));
+                } else if (index == 4) {
+                    image.setImageResource(imageList.get(2));
+                } else if (index == 6) {
+                    image.setImageResource(imageList.get(3));
+                } else {
+                    image.setImageResource(imageList.get(5));
+                }
 
                 txt.setText(phrase);
             }
