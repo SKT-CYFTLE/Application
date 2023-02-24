@@ -25,8 +25,8 @@ public class CyftlePagerAdapter extends FragmentStateAdapter {
         else if (position == 3) return new Page2Fragment();
         else if (position == 4) return new Page3Fragment();
         else if (position == 5) return new Page4Fragment();
-        else return new Page5Fragment();
-
+//        else return new Page5Fragment();
+        else return new PageFragment6();
     }
 
     @Override

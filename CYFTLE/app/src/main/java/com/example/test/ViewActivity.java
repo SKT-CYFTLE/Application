@@ -36,7 +36,8 @@ public class ViewActivity extends AppCompatActivity {
         fragments.add(new Page2Fragment());
         fragments.add(new Page3Fragment());
         fragments.add(new Page4Fragment());
-        fragments.add(new Page5Fragment());
+//        fragments.add(new Page5Fragment());
+        fragments.add(new PageFragment6());
         // 페이저 생성
         pager = findViewById(R.id.pager);
         pager.setOffscreenPageLimit(2);
