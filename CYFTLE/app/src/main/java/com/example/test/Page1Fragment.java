@@ -1,5 +1,6 @@
 package com.example.test;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
@@ -21,7 +22,10 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import javax.xml.bind.DatatypeConverter;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -35,8 +39,10 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.Streaming;
 
 
 public class Page1Fragment extends Fragment {
@@ -45,6 +51,8 @@ public class Page1Fragment extends Fragment {
     private ImageView duck_image;
     private SharedViewModel sharedViewModel;
     private EngToKorInterface engapi;
+    private TtsInterface ttsapi;
+    private SuccessInterface sucapi;
     private String url;
 
     // stt로 가져온 데이터 서버로 보내기
@@ -97,6 +105,8 @@ public class Page1Fragment extends Fragment {
                 .build();
 
         engapi = retrofit.create(EngToKorInterface.class);
+        ttsapi = retrofit.create(TtsInterface.class);
+        sucapi = retrofit.create(SuccessInterface.class);
 
         return view;
     }
@@ -110,9 +120,23 @@ public class Page1Fragment extends Fragment {
     }
 
 
+    // tts 인터페이스
+    public interface TtsInterface {
+        @Headers({"Content-Type: application/json"})
+        @POST("/tts_kakao/")
+        Call<ResponseBody> sendText(@Body RequestBody requestBody);
+    }
+
+
+    public interface SuccessInterface {
+        @GET("/tts_result/kakao")
+        @Streaming
+        Call<ResponseBody> getTTS();
+    }
+
 
     private void sendEngToServer(String story) {
-        try{
+        try {
             // json 파일 만들기
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("content", story);
@@ -127,11 +151,9 @@ public class Page1Fragment extends Fragment {
                 @Override
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                     // 성공하면 해야할 반응
-                    if(response.isSuccessful()) {
+                    if (response.isSuccessful()) {
                         try {
                             String result = response.body().string();
-                            Log.d("tag", "" + result);
-
                             String[] story = result.split("\\*\\*");
 
                             Log.d("tag", "단락1:" + story[0]);
@@ -141,29 +163,116 @@ public class Page1Fragment extends Fragment {
                             Log.d("tag", "단락5:" + story[4]);
 
                             duck.setText(story[0]);
+
                             sharedViewModel.setText2(story[1]);
                             sharedViewModel.setText3(story[2]);
                             sharedViewModel.setText4(story[3]);
                             sharedViewModel.setText5(story[4]);
-                        }
-                        catch (IOException e) {
+
+                            getTTSFromServer(story[0]);
+//                            getTTSFromServer(story[1]);
+//                            getTTSFromServer(story[2]);
+//                            getTTSFromServer(story[3]);
+//                            getTTSFromServer(story[4]);
+
+                        } catch (IOException e) {
                             e.printStackTrace();
                         }
-                    }
-                    else {
-                        Toast myToast = Toast.makeText(getActivity(),"에러", Toast.LENGTH_SHORT);
+                    } else {
+                        Toast myToast = Toast.makeText(getActivity(), "에러", Toast.LENGTH_SHORT);
                         myToast.show();
                     }
                 }
+
                 @Override
                 public void onFailure(Call<ResponseBody> call, Throwable t) {
                     // 실패 시
-                    Toast myToast = Toast.makeText(getActivity(),"실패", Toast.LENGTH_SHORT);
+                    Toast myToast = Toast.makeText(getActivity(), "실패", Toast.LENGTH_SHORT);
                     myToast.show();
                 }
             });
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
-        catch (JSONException e) {
+    }
+
+    private void getTTSFromServer(String para) {
+        try {
+            // json 파일 만들기
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("content", para);
+            // JSON 파일을 텍스트로 변환
+            String jsonStory = jsonObject.toString();
+            // request body를 json 포맷 텍스트로 생성한다
+            RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), jsonStory);
+
+            // 데이터 서버로 보내기
+            Call<ResponseBody> call = ttsapi.sendText(requestBody);
+            call.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    // 성공하면 해야할 반응
+                    if (response.isSuccessful()) {
+                        try {
+                            String result = response.body().string();
+                            Log.d("tag", "" + result);
+
+                            Call<ResponseBody> tts = sucapi.getTTS();
+                            tts.enqueue(new Callback<ResponseBody>() {
+                                @Override
+                                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                                    // Handle the file response
+                                    ResponseBody body = response.body();
+
+                                    Log.d("tag", "오디오: " + body);
+
+                                    try {
+                                        // Save the file to disk
+                                        InputStream inputStream = body.byteStream();
+                                        FileOutputStream fos = new FileOutputStream("audio.mp3");
+                                        byte[] buffer = new byte[1024];
+                                        int read;
+                                        while ((read = inputStream.read(buffer)) != -1) {
+                                            fos.write(buffer, 0, read);
+                                        }
+                                        fos.close();
+                                        inputStream.close();
+
+                                        // Play the file using MediaPlayer
+                                        MediaPlayer mediaPlayer = new MediaPlayer();
+                                        mediaPlayer.setDataSource("audio.mp3");
+                                        mediaPlayer.prepare();
+                                        mediaPlayer.start();
+
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                                    // Handle the error
+                                    Toast myToast = Toast.makeText(getActivity(),"tts 실패", Toast.LENGTH_SHORT);
+                                    myToast.show();
+                                }
+                            });
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        Toast myToast = Toast.makeText(getActivity(), "에러", Toast.LENGTH_SHORT);
+                        myToast.show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    // 실패 시
+                    Toast myToast = Toast.makeText(getActivity(), "실패", Toast.LENGTH_SHORT);
+                    myToast.show();
+                }
+            });
+        } catch (JSONException e) {
             e.printStackTrace();
         }
     }

@@ -31,7 +31,7 @@
         android:scaleType="centerCrop"
         android:layout_alignParentRight="true"
         android:layout_marginTop="95dp"
-        android:layout_marginRight="60dp"
+        android:layout_marginRight="17dp"
         app:lottie_rawRes="@raw/loading"
         app:lottie_loop="true"
         app:lottie_autoPlay="true" />

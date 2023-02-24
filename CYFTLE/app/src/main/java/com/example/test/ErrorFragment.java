@@ -1,5 +1,7 @@
 package com.example.test;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,12 +16,15 @@ public class ErrorFragment extends DialogFragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_error, container, false);
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        LayoutInflater inflater = LayoutInflater.from(getActivity());
+        View view = inflater.inflate(R.layout.fragment_error, null);
 
         MediaPlayer mediaPlayer = MediaPlayer.create(getContext(), R.raw.retry);
         mediaPlayer.start();
 
-        return view;
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setView(view);
+        return builder.create();
     }
 }

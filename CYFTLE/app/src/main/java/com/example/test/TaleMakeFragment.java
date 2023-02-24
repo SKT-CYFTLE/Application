@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -69,7 +70,8 @@ public class TaleMakeFragment extends Fragment {
                     public void onClick(View v) {
                         sendKorToServer(s);
 
-                        loadingFragment.show(getFragmentManager(), "loading");
+                        FragmentTransaction ft = getFragmentManager().beginTransaction();
+                        loadingFragment.show(ft, "loading");
                     }
                 });
             }
@@ -166,7 +168,8 @@ public class TaleMakeFragment extends Fragment {
                     else {
                         loadingFragment.dismiss();
                         ErrorFragment errorFragment = new ErrorFragment();
-                        errorFragment.show(getFragmentManager(), "error");
+                        FragmentTransaction ft = getFragmentManager().beginTransaction();
+                        errorFragment.show(ft, "error");
                     }
                 }
                 @Override
@@ -200,8 +203,6 @@ public class TaleMakeFragment extends Fragment {
                     if (response.isSuccessful()) {
                         try {
                             String result = response.body().string();
-                            Toast myToast = Toast.makeText(getActivity(), "이야기가 다 만들어 졌어요!", Toast.LENGTH_SHORT);
-                            myToast.show();
 
                             Log.d("tag", "" + result);
 
@@ -226,7 +227,8 @@ public class TaleMakeFragment extends Fragment {
                     } else {
                         loadingFragment.dismiss();
                         ErrorFragment errorFragment = new ErrorFragment();
-                        errorFragment.show(getFragmentManager(), "error");
+                        FragmentTransaction ft = getFragmentManager().beginTransaction();
+                        errorFragment.show(ft, "error");
                     }
                 }
 
@@ -299,7 +301,8 @@ public class TaleMakeFragment extends Fragment {
                     else {
                         loadingFragment.dismiss();
                         ErrorFragment errorFragment = new ErrorFragment();
-                        errorFragment.show(getFragmentManager(), "error");
+                        FragmentTransaction ft = getFragmentManager().beginTransaction();
+                        errorFragment.show(ft, "error");
                     }
                 }
                 @Override
@@ -345,8 +348,17 @@ public class TaleMakeFragment extends Fragment {
 
                                 loadingFragment.dismiss();
                                 DoneFragment doneFragment = new DoneFragment();
-                                doneFragment.show(getFragmentManager(), "done");
-                            } 
+                                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                                doneFragment.show(ft, "done");
+                            } else if (urlList.size() == 6) {
+                                List<String> except = urlList.subList(1, 6);
+
+                                sharedViewModel.setArr(except);
+                                loadingFragment.dismiss();
+                                DoneFragment doneFragment = new DoneFragment();
+                                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                                doneFragment.show(ft, "done");
+                            }
                         }
                         catch (IOException e) {
                             e.printStackTrace();
@@ -355,7 +367,8 @@ public class TaleMakeFragment extends Fragment {
                     else {
                         loadingFragment.dismiss();
                         ErrorFragment errorFragment = new ErrorFragment();
-                        errorFragment.show(getFragmentManager(), "error");
+                        FragmentTransaction ft = getFragmentManager().beginTransaction();
+                        errorFragment.show(ft, "error");
                     }
                 }
                 @Override
