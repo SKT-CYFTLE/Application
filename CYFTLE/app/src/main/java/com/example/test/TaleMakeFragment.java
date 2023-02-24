@@ -351,7 +351,7 @@ public class TaleMakeFragment extends Fragment {
                                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                                 doneFragment.show(ft, "done");
                             } else if (urlList.size() == 6) {
-                                List<String> except = urlList.subList(1, 6);
+                                List<String> except = urlList.subList(2, 7);
 
                                 sharedViewModel.setArr(except);
                                 loadingFragment.dismiss();

@@ -33,7 +33,7 @@
             android:layout_width="275dp"
             android:layout_height="275dp"
             android:layout_gravity="center"
-            android:src="@tools:sample/avatars" />
+            tools:srcCompat="@tools:sample/avatars" />
     </FrameLayout>
 
     <FrameLayout

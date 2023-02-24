@@ -1,7 +1,9 @@
 package com.example.test;
 
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Environment;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,10 +24,8 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import javax.xml.bind.DatatypeConverter;
-import java.io.FileOutputStream;
+
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -52,8 +52,8 @@ public class Page1Fragment extends Fragment {
     private SharedViewModel sharedViewModel;
     private EngToKorInterface engapi;
     private TtsInterface ttsapi;
-    private SuccessInterface sucapi;
     private String url;
+    private String ttstory;
 
     // stt로 가져온 데이터 서버로 보내기
     @Override
@@ -89,6 +89,13 @@ public class Page1Fragment extends Fragment {
         // textview 스크롤 가능하게 한다
         duck.setMovementMethod(new ScrollingMovementMethod());
 
+        ImageView image = (ImageView) view.findViewById(R.id.ducktale_image);
+        image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getTTSFromServer(ttstory);
+            }
+        });
 
         // timeout setting 해주기
         OkHttpClient okHttpClient = new OkHttpClient().newBuilder()
@@ -106,7 +113,6 @@ public class Page1Fragment extends Fragment {
 
         engapi = retrofit.create(EngToKorInterface.class);
         ttsapi = retrofit.create(TtsInterface.class);
-        sucapi = retrofit.create(SuccessInterface.class);
 
         return view;
     }
@@ -123,16 +129,10 @@ public class Page1Fragment extends Fragment {
     // tts 인터페이스
     public interface TtsInterface {
         @Headers({"Content-Type: application/json"})
-        @POST("/tts_kakao/")
+        @POST("/tts_azure/")
         Call<ResponseBody> sendText(@Body RequestBody requestBody);
     }
 
-
-    public interface SuccessInterface {
-        @GET("/tts_result/kakao")
-        @Streaming
-        Call<ResponseBody> getTTS();
-    }
 
 
     private void sendEngToServer(String story) {
@@ -163,17 +163,13 @@ public class Page1Fragment extends Fragment {
                             Log.d("tag", "단락5:" + story[4]);
 
                             duck.setText(story[0]);
+                            ttstory = story[0];
 
                             sharedViewModel.setText2(story[1]);
                             sharedViewModel.setText3(story[2]);
                             sharedViewModel.setText4(story[3]);
                             sharedViewModel.setText5(story[4]);
 
-                            getTTSFromServer(story[0]);
-//                            getTTSFromServer(story[1]);
-//                            getTTSFromServer(story[2]);
-//                            getTTSFromServer(story[3]);
-//                            getTTSFromServer(story[4]);
 
                         } catch (IOException e) {
                             e.printStackTrace();
@@ -212,58 +208,23 @@ public class Page1Fragment extends Fragment {
                 @Override
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                     // 성공하면 해야할 반응
+
+                    Log.d("tag", "1");
                     if (response.isSuccessful()) {
+                        String fileUrl = "http://20.214.190.71/tts_result/azure";
+                        MediaPlayer mediaPlayer = new MediaPlayer();
+
                         try {
-                            String result = response.body().string();
-                            Log.d("tag", "" + result);
-
-                            Call<ResponseBody> tts = sucapi.getTTS();
-                            tts.enqueue(new Callback<ResponseBody>() {
-                                @Override
-                                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                                    // Handle the file response
-                                    ResponseBody body = response.body();
-
-                                    Log.d("tag", "오디오: " + body);
-
-                                    try {
-                                        // Save the file to disk
-                                        InputStream inputStream = body.byteStream();
-                                        FileOutputStream fos = new FileOutputStream("audio.mp3");
-                                        byte[] buffer = new byte[1024];
-                                        int read;
-                                        while ((read = inputStream.read(buffer)) != -1) {
-                                            fos.write(buffer, 0, read);
-                                        }
-                                        fos.close();
-                                        inputStream.close();
-
-                                        // Play the file using MediaPlayer
-                                        MediaPlayer mediaPlayer = new MediaPlayer();
-                                        mediaPlayer.setDataSource("audio.mp3");
-                                        mediaPlayer.prepare();
-                                        mediaPlayer.start();
-
-                                    } catch (IOException e) {
-                                        e.printStackTrace();
-                                    }
-                                }
-
-                                @Override
-                                public void onFailure(Call<ResponseBody> call, Throwable t) {
-                                    // Handle the error
-                                    Toast myToast = Toast.makeText(getActivity(),"tts 실패", Toast.LENGTH_SHORT);
-                                    myToast.show();
-                                }
-                            });
+                            mediaPlayer.setDataSource(fileUrl);
+                            mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                            mediaPlayer.prepare();
+                            mediaPlayer.start();
                         } catch (IOException e) {
-                            e.printStackTrace();
+                            Log.d("tag", "Error playing audio from URL: " + e.getMessage());
                         }
-                    } else {
-                        Toast myToast = Toast.makeText(getActivity(), "에러", Toast.LENGTH_SHORT);
-                        myToast.show();
                     }
                 }
+
 
                 @Override
                 public void onFailure(Call<ResponseBody> call, Throwable t) {
@@ -277,3 +238,4 @@ public class Page1Fragment extends Fragment {
         }
     }
 }
+
