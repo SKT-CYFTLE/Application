@@ -1,6 +1,5 @@
 package com.example.test;
 
-import android.media.Image;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -15,7 +14,6 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-
 
 import com.squareup.picasso.Picasso;
 
@@ -41,8 +39,8 @@ import retrofit2.http.POST;
 
 
 public class Page2Fragment extends Fragment {
-    private TextView text;
-    private ImageView duck_image;
+    private TextView tale;
+    private ImageView tale_image;
     private SharedViewModel sharedViewModel;
     private String url;
     public String ttsstory;
@@ -53,14 +51,14 @@ public class Page2Fragment extends Fragment {
     }
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_page2, container, false);
 
         sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
 
-        ImageView image = (ImageView) view.findViewById(R.id.ducktale_image);
+        ImageView image = (ImageView) view.findViewById(R.id.tale_image);
+        // 이미지 클릭하면 tts 실행
         image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,23 +66,25 @@ public class Page2Fragment extends Fragment {
             }
         });
 
-        text = (TextView) view.findViewById(R.id.duck_tale);
+        tale = (TextView) view.findViewById(R.id.tale);
         // textview 스크롤 가능하게 한다
-        text.setMovementMethod(new ScrollingMovementMethod());
+        tale.setMovementMethod(new ScrollingMovementMethod());
+        // 텍스트에 본문 표시
         sharedViewModel.getText2().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                text.setText(s);
+                tale.setText(s);
                 ttsstory = s;
             }
         });
+        // 이미지뷰에 이미지 표시
         sharedViewModel.getArr().observe(getViewLifecycleOwner(), new Observer<List<String>>() {
             @Override
             public void onChanged(List<String> urlList) {
                 url = urlList.get(1);
 
-                duck_image = view.findViewById(R.id.ducktale_image);
-                Picasso.get().load(url).into(duck_image);
+                tale_image = view.findViewById(R.id.tale_image);
+                Picasso.get().load(url).into(tale_image);
             }
         });
 
@@ -107,6 +107,7 @@ public class Page2Fragment extends Fragment {
         return view;
     }
 
+    // tts를 실행하고 싶은 문장을 보내서 결과를 받아옴
     public interface TtsInterface {
         @Headers({"Content-Type: application/json"})
         @POST("/tts_azure/")
@@ -133,9 +134,11 @@ public class Page2Fragment extends Fragment {
                     Log.d("tag", "1");
                     if (response.isSuccessful()) {
                         String fileUrl = "http://20.214.190.71/tts_result/azure";
+                        // mediaplayer 선언
                         MediaPlayer mediaPlayer = new MediaPlayer();
 
                         try {
+                            // 미디어 플레이어가 가져올 url을 넣고 시작함
                             mediaPlayer.setDataSource(fileUrl);
                             mediaPlayer.prepare();
                             mediaPlayer.start();

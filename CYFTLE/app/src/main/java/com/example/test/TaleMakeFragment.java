@@ -15,10 +15,10 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -61,6 +61,7 @@ public class TaleMakeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
+        // stt 받아왔을 때 버튼을 누르면 해당 stt 텍스트를 서버에 전송해줌
         sharedViewModel.getStt().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
@@ -140,6 +141,7 @@ public class TaleMakeFragment extends Fragment {
         Call<ResponseBody> sendText(@Body RequestBody requestBody);
     }
 
+    // 한국어를 서버로 보내서 영어로 번역된 것 받아옴
     private void sendKorToServer(String stt) {
         try{
             // json 파일 만들기
@@ -159,6 +161,7 @@ public class TaleMakeFragment extends Fragment {
                     if(response.isSuccessful()) {
                         try {
                             String result = response.body().string();
+                            // 번역된 결과 서버로 보냄
                             sendTransToServer(result);
                         }
                         catch (IOException e) {
@@ -184,6 +187,7 @@ public class TaleMakeFragment extends Fragment {
             e.printStackTrace();
         }
     }
+    // 영어로 번역된 것 서버로 보내서 ChatGPT로부터 동화를 생성 받음
     private void sendTransToServer(String trans) {
         try {
             // json 파일 만들기
@@ -205,7 +209,7 @@ public class TaleMakeFragment extends Fragment {
                             String result = response.body().string();
 
                             Log.d("tag", "" + result);
-
+                            // 받아온 결과를 쓸 수 있는 형태로 리포매팅
                             String rest = result.replaceAll("^\"|\"$", "")
                                     .replaceAll("\\\\\"", "\"")
                                     .replaceAll("\\\\\\\\n\\\\\\\\n", "**")
@@ -219,7 +223,7 @@ public class TaleMakeFragment extends Fragment {
 
                             full = value.toString();
                             sharedViewModel.setStory(full);
-
+                            // 요약문을 만들어 달라고 id 값들을 전달함
                             sendStoryToServer(p_id, c_id);
                         } catch (IOException e) {
                             e.printStackTrace();
@@ -243,6 +247,7 @@ public class TaleMakeFragment extends Fragment {
             e.printStackTrace();
         }
     }
+    // 생성된 동화의 id값을 보내고 요약된 결과를 받아옴
     private void sendStoryToServer(Object pid, Object cid) {
         try{
             // json 파일 만들기
@@ -264,6 +269,7 @@ public class TaleMakeFragment extends Fragment {
                         try {
                             String result = response.body().string();
 
+                            // 받아온 결과를 사용할 수 있는 형태로 포매팅
                             String summ = result.replaceAll("^\"|\"$", "")
                                     .replaceAll("\\\\\"summarized\\\\", "\"summarized")
                                     .replaceAll("\\\\\"", "\"")
@@ -280,6 +286,7 @@ public class TaleMakeFragment extends Fragment {
 
                             p_id = map.get("p_id");
                             c_id = map.get("c_id");
+                            // 배열에 요약문들을 담아둠
                             ArrayList<String> summArray = object.convertValue(sum, new TypeReference<ArrayList<String>>() {});
 
                             sendSummaryToServer(summArray.get(0));
@@ -317,6 +324,7 @@ public class TaleMakeFragment extends Fragment {
             e.printStackTrace();
         }
     }
+    // 요약문들을 달리로 보내서 이미지 url을 받아옴
     private void sendSummaryToServer(String summary) {
         try{
             // json 파일 만들기

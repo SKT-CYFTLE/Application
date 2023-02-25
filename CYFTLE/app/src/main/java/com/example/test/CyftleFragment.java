@@ -11,15 +11,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+
 import org.jetbrains.annotations.Nullable;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 
 public class CyftleFragment extends Fragment {
 
@@ -36,6 +34,8 @@ public class CyftleFragment extends Fragment {
 
         Button sttButton = (Button) view.findViewById(R.id.sttbtn);
         mSttTextView = view.findViewById(R.id.sttTxt);
+
+        // 버픈 눌렀을 때 stt 실행
         sttButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,7 +46,7 @@ public class CyftleFragment extends Fragment {
         return view;
     }
 
-
+    // stt 시작
     private void startStt() {
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);

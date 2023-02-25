@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -27,6 +28,7 @@ public class DrawerActivity extends AppCompatActivity {
         ImageView logo = (ImageView) findViewById(R.id.cyftle_logo);
         TextView text = (TextView) findViewById(R.id.cyftle_text);
 
+        // 로고 누르면 화면 이동
         logo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -34,6 +36,7 @@ public class DrawerActivity extends AppCompatActivity {
                 startActivity(logoIntent);
             }
         });
+        // 텍스트 누르면 화면 이동
         text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,6 +45,7 @@ public class DrawerActivity extends AppCompatActivity {
             }
         });
     }
+    
     // 툴바 초기화
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -29,7 +29,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/ducktale_image"
+            android:id="@+id/tale_image"
             android:layout_width="275dp"
             android:layout_height="275dp"
             android:layout_gravity="center"
@@ -46,7 +46,7 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent">
         <TextView
-            android:id="@+id/duck_tale"
+            android:id="@+id/tale"
             android:layout_width="275dp"
             android:layout_height="150dp"
             android:scrollbars="vertical"

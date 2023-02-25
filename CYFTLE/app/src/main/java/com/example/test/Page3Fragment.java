@@ -11,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -39,8 +38,8 @@ import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 public class Page3Fragment extends Fragment {
-    private TextView text;
-    private ImageView duck_image;
+    private TextView tale;
+    private ImageView tale_image;
     private SharedViewModel sharedViewModel;
     private String url;
     public String ttsstory;
@@ -55,7 +54,8 @@ public class Page3Fragment extends Fragment {
 
         sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
 
-        ImageView image = (ImageView) view.findViewById(R.id.ducktale_image);
+        ImageView image = (ImageView) view.findViewById(R.id.tale_image);
+        // 이미지를 클릭하면 tts 실행
         image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,24 +63,26 @@ public class Page3Fragment extends Fragment {
             }
         });
 
-        text = (TextView) view.findViewById(R.id.duck_tale);
+        tale = (TextView) view.findViewById(R.id.tale);
         // textview 스크롤 가능하게 한다
-        text.setMovementMethod(new ScrollingMovementMethod());
+        tale.setMovementMethod(new ScrollingMovementMethod());
+        // 텍스트뷰에 본문 나타냄
         sharedViewModel.getText3().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                text.setText(s);
+                tale.setText(s);
                 ttsstory = s;
                 Log.d("tag", ""+ ttsstory);
             }
         });
+        // 이미지 url을 받아와서 이미지를 그려냄
         sharedViewModel.getArr().observe(getViewLifecycleOwner(), new Observer<List<String>>() {
             @Override
             public void onChanged(List<String> urlList) {
                 url = urlList.get(2);
 
-                duck_image = view.findViewById(R.id.ducktale_image);
-                Picasso.get().load(url).into(duck_image);
+                tale_image = view.findViewById(R.id.tale_image);
+                Picasso.get().load(url).into(tale_image);
             }
         });
 
@@ -109,6 +111,7 @@ public class Page3Fragment extends Fragment {
         Call<ResponseBody> sendText(@Body RequestBody requestBody);
     }
 
+    // tts로 만들고 싶은 문장을 서버로 보내서 tts를 가져옴
     private void getTTSFromServer(String para) {
         try {
             // json 파일 만들기
@@ -128,8 +131,8 @@ public class Page3Fragment extends Fragment {
 
                     Log.d("tag", "1");
                     if (response.isSuccessful()) {
-
                         String fileUrl = "http://20.214.190.71/tts_result/azure";
+
                         MediaPlayer mediaPlayer = new MediaPlayer();
 
                         try {
@@ -141,7 +144,6 @@ public class Page3Fragment extends Fragment {
                         }
                     }
                 }
-
 
                 @Override
                 public void onFailure(Call<ResponseBody> call, Throwable t) {

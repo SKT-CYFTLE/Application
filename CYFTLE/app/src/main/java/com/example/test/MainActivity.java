@@ -1,9 +1,6 @@
 package com.example.test;
 
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -12,7 +9,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         // 툴바의 타이틀을 삭제 하는 것
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
+        // 텍스트 배열과 이미지 배열 매핑
         ArrayList<Integer> imageList = new ArrayList<>();
         imageList.add(R.drawable.classic);
         imageList.add(R.drawable.execise);
@@ -56,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         ImageView image = (ImageView) findViewById(R.id.image);
         // 랜덤 텍스트 구현
         TextView txt = (TextView) findViewById(R.id.txt);
-
+        // mP3 플레이 시작
         MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.intro);
         mediaPlayer.start();
 
@@ -66,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int index = getRandomIndex();
-                // Retrieve the phrase associated with the index
+                // index에 맞게 이미지가 같이 나타남
                 String phrase = phrases[index];
                 if (index == 0) {
                     image.setImageResource(imageList.get(4));
@@ -129,10 +133,10 @@ public class MainActivity extends AppCompatActivity {
             index = (int) (Math.random() * phrases.length);
         }
 
-        // Add the index to the list of used indices
+        // 사용했던 인덱스를 배열에 추가
         usedIndices.add(index);
 
-        // If all indices have been used, clear the list and start over
+        // 만약 모든 인덱스를 사용했다면 초기화 후 다시 처음부터
         if (usedIndices.size() == phrases.length) {
             usedIndices.clear();
         }
