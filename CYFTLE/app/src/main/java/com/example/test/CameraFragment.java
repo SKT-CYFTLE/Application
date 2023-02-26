@@ -1,24 +1,28 @@
 package com.example.test;
 
-import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Map;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.MediaType;
@@ -35,27 +39,16 @@ import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 
-public class DoneFragment extends DialogFragment {
-    private Object pid;
-    private Object cid;
+public class CameraFragment extends Fragment {
 
+    public CameraFragment() {
+        // Required empty public constructor
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_done, container, false);
+        View view = inflater.inflate(R.layout.fragment_camera, container, false);
 
-
-        MediaPlayer mediaPlayer = MediaPlayer.create(getContext(), R.raw.done);
-        mediaPlayer.start();
-
-        Button close = (Button) view.findViewById(R.id.closebtn);
-        close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                dismiss();
-            }
-        });
 
         return view;
     }

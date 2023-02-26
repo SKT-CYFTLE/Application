@@ -21,6 +21,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -37,6 +38,7 @@ import retrofit2.http.Body;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
+
 public class Page3Fragment extends Fragment {
     private TextView tale;
     private ImageView tale_image;
@@ -44,45 +46,59 @@ public class Page3Fragment extends Fragment {
     private String url;
     public String ttsstory;
     private TtsInterface ttsapi;
-    public Page3Fragment() {
-        // Required empty public constructor
-    }
+    private EngToKorInterface engapi;
+    public String ans1;
+    public String ans2;
+    public String ans3;
+    private List<String> answerList = new ArrayList<>();
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_page3, container, false);
+        View view = inflater.inflate(R.layout.fragment_page5, container, false);
 
         sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
 
         ImageView image = (ImageView) view.findViewById(R.id.tale_image);
-        // 이미지를 클릭하면 tts 실행
+        // 이미지 클릭하면 tts 실행
         image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getTTSFromServer(ttsstory);
+                sendEngToServer(ans1);
+                sendEngToServer(ans2);
+                sendEngToServer(ans3);
             }
         });
 
         tale = (TextView) view.findViewById(R.id.tale);
         // textview 스크롤 가능하게 한다
         tale.setMovementMethod(new ScrollingMovementMethod());
-        // 텍스트뷰에 본문 나타냄
-        sharedViewModel.getText3().observe(getViewLifecycleOwner(), new Observer<String>() {
+        // 텍스트뷰에 본문을 표시
+        sharedViewModel.getText5().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
                 tale.setText(s);
                 ttsstory = s;
-                Log.d("tag", ""+ ttsstory);
             }
         });
-        // 이미지 url을 받아와서 이미지를 그려냄
+        // 이미지 url을 받아서 그림을 그린다.
         sharedViewModel.getArr().observe(getViewLifecycleOwner(), new Observer<List<String>>() {
             @Override
             public void onChanged(List<String> urlList) {
-                url = urlList.get(2);
+                url = urlList.get(4);
 
                 tale_image = view.findViewById(R.id.tale_image);
                 Picasso.get().load(url).into(tale_image);
+            }
+        });
+
+        sharedViewModel.getAnswer().observe(getViewLifecycleOwner(), new Observer<List<String>>() {
+            @Override
+            public void onChanged(List<String> answer) {
+                ans1 = answer.get(0);
+                ans2 = answer.get(1);
+                ans3 = answer.get(2);
             }
         });
 
@@ -94,24 +110,41 @@ public class Page3Fragment extends Fragment {
                 .build();
 
         // Retrofit으로 통신하기 위한 인스턴스 생성하기
-        Retrofit retrofit = new Retrofit.Builder()
+        Retrofit junyoung = new Retrofit.Builder()
                 .baseUrl("http://20.214.190.71/")
                 .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        ttsapi = retrofit.create(TtsInterface.class);
+        // Retrofit으로 통신하기 위한 인스턴스 생성하기
+        Retrofit hoonseo = new Retrofit.Builder()
+                .baseUrl("http://20.249.75.188/")
+                .client(okHttpClient)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        ttsapi = hoonseo.create(TtsInterface.class);
+//        engapi = junyoung.create(EngToKorInterface.class);
 
         return view;
     }
 
+
+    // tts 인터페이스
     public interface TtsInterface {
         @Headers({"Content-Type: application/json"})
-        @POST("/tts_azure/")
+        @POST("/tts_kakao/")
         Call<ResponseBody> sendText(@Body RequestBody requestBody);
     }
 
-    // tts로 만들고 싶은 문장을 서버로 보내서 tts를 가져옴
+    // 영어 한국어로 변환해주는 인터페이스
+    public interface EngToKorInterface {
+        @Headers({"Content-Type: application/json"})
+        @POST("/translating/?lang=eng")
+        Call<ResponseBody> sendText(@Body RequestBody requestBody);
+    }
+
+    // tts로 만들고 싶은 문장 서버로 보내서 음성 파일 생성
     private void getTTSFromServer(String para) {
         try {
             // json 파일 만들기
@@ -128,10 +161,8 @@ public class Page3Fragment extends Fragment {
                 @Override
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                     // 성공하면 해야할 반응
-
-                    Log.d("tag", "1");
                     if (response.isSuccessful()) {
-                        String fileUrl = "http://20.214.190.71/tts_result/azure";
+                        String fileUrl = "http://20.249.75.188/tts_result/kakao";
 
                         MediaPlayer mediaPlayer = new MediaPlayer();
 
@@ -142,6 +173,54 @@ public class Page3Fragment extends Fragment {
                         } catch (IOException e) {
                             Log.d("tag", "Error playing audio from URL: " + e.getMessage());
                         }
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    // 실패 시
+                    Toast myToast = Toast.makeText(getActivity(), "실패", Toast.LENGTH_SHORT);
+                    myToast.show();
+                }
+            });
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void sendEngToServer(String answer) {
+        try {
+            // json 파일 만들기
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("content", answer);
+            // JSON 파일을 텍스트로 변환
+            String jsonStory = jsonObject.toString();
+            // request body를 json 포맷 텍스트로 생성한다
+            RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), jsonStory);
+
+            // 데이터 서버로 보내기
+            Call<ResponseBody> call = engapi.sendText(requestBody);
+            call.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    // 성공하면 해야할 반응
+                    if (response.isSuccessful()) {
+                        try {
+                            String result = response.body().string();
+                            answerList.add(result);
+
+                            Log.d("tag", "번역된 정답:" + answerList);
+
+                            if (answerList.size() == 3){
+                                sharedViewModel.setAnswer(answerList);
+                            }
+
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        Toast myToast = Toast.makeText(getActivity(), "에러", Toast.LENGTH_SHORT);
+                        myToast.show();
                     }
                 }
 

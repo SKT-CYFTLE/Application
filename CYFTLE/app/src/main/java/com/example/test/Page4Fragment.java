@@ -94,13 +94,13 @@ public class Page4Fragment extends Fragment {
                 .build();
 
         // Retrofit으로 통신하기 위한 인스턴스 생성하기
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://20.214.190.71/")
+        Retrofit hoonseo = new Retrofit.Builder()
+                .baseUrl("http://20.249.75.188/")
                 .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        ttsapi = retrofit.create(TtsInterface.class);
+        ttsapi = hoonseo.create(TtsInterface.class);
 
         return view;
     }
@@ -108,7 +108,7 @@ public class Page4Fragment extends Fragment {
     // tts 인터페이스
     public interface TtsInterface {
         @Headers({"Content-Type: application/json"})
-        @POST("/tts_azure/")
+        @POST("/tts_kakao/")
         Call<ResponseBody> sendText(@Body RequestBody requestBody);
     }
 
@@ -129,10 +129,8 @@ public class Page4Fragment extends Fragment {
                 @Override
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                     // 성공하면 해야할 반응
-
-                    Log.d("tag", "1");
                     if (response.isSuccessful()) {
-                        String fileUrl = "http://20.214.190.71/tts_result/azure";
+                        String fileUrl = "http://20.249.75.188/tts_result/kakao";
 
                         MediaPlayer mediaPlayer = new MediaPlayer();
 

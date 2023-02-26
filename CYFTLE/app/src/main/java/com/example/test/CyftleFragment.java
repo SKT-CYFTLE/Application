@@ -5,6 +5,7 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -70,6 +71,8 @@ public class CyftleFragment extends Fragment {
             ArrayList<String> results = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
             String text = results.get(0);
 
+            // textview 스크롤 가능하게 한다
+            mSttTextView.setMovementMethod(new ScrollingMovementMethod());
             mSttTextView.setText(text);
             sharedViewModel.setStt(text);
         }

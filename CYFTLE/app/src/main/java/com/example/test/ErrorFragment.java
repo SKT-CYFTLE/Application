@@ -6,6 +6,8 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.fragment.app.DialogFragment;
 
@@ -13,16 +15,23 @@ import androidx.fragment.app.DialogFragment;
 public class ErrorFragment extends DialogFragment {
 
 
+
     @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
-        LayoutInflater inflater = LayoutInflater.from(getActivity());
-        View view = inflater.inflate(R.layout.fragment_error, null);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_error, container, false);
 
         MediaPlayer mediaPlayer = MediaPlayer.create(getContext(), R.raw.retry);
         mediaPlayer.start();
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setView(view);
-        return builder.create();
+        Button close = (Button) view.findViewById(R.id.closebtn);
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                dismiss();
+            }
+        });
+
+        return view;
     }
 }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/talemaker"
-    android:background="@drawable/dialog"
+    android:background="@drawable/text_circle"
     tools:context=".MainActivity">
 
 

@@ -19,6 +19,7 @@ public class ViewActivity extends AppCompatActivity {
     private ViewPager2 pager;
     private FragmentStateAdapter pagerAdapter;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +31,7 @@ public class ViewActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         // 프래그먼트 리스트 생성
         List<Fragment> fragments = new ArrayList<>();
+        fragments.add(new CameraFragment());
         fragments.add(new CyftleFragment());
         fragments.add(new TaleMakeFragment());
         fragments.add(new Page1Fragment());
@@ -37,10 +39,12 @@ public class ViewActivity extends AppCompatActivity {
         fragments.add(new Page3Fragment());
         fragments.add(new Page4Fragment());
         fragments.add(new Page5Fragment());
+        fragments.add(new Page6Fragment());
+        fragments.add(new Page7Fragment());
 
         // 페이저 생성
         pager = findViewById(R.id.pager);
-        pager.setOffscreenPageLimit(2);
+        pager.setOffscreenPageLimit(4);
         pagerAdapter = new CyftlePagerAdapter(this, fragments);
         pager.setAdapter(pagerAdapter);
 

@@ -1,5 +1,6 @@
 package com.example.test;
 
+import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -15,16 +16,23 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.MediaType;
@@ -50,6 +58,15 @@ public class Page1Fragment extends Fragment {
     private TtsInterface ttsapi;
     private String url;
     private String ttstory;
+    public Object p_id;
+    public Object c_id;
+    public Object ans_p_id;
+    public Object ans_c_id;
+    private QuestionInterface questionapi;
+    private AnswerInterface answerapi;
+    private List<String> question;
+    private SummarizeInterface summaryapi;
+    private DalleInterface dalleapi;
 
     // stt로 가져온 데이터 서버로 보내기
     @Override
@@ -74,6 +91,20 @@ public class Page1Fragment extends Fragment {
                 Picasso.get().load(url).into(tale_image);
             }
         });
+        sharedViewModel.getPid().observe(getViewLifecycleOwner(), new Observer<Object>() {
+            @Override
+            public void onChanged(Object pid) {
+                p_id = pid;
+                Log.d("tag", "pid" + p_id);
+            }
+        });
+        sharedViewModel.getCid().observe(getViewLifecycleOwner(), new Observer<Object>() {
+            @Override
+            public void onChanged(Object cid) {
+                c_id = cid;
+                Log.d("tag", "cid" + c_id);
+            }
+        });
     }
 
     @Nullable
@@ -93,6 +124,7 @@ public class Page1Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 getTTSFromServer(ttstory);
+                getQuestionFromServer(p_id, c_id);
             }
         });
 
@@ -104,14 +136,25 @@ public class Page1Fragment extends Fragment {
                 .build();
 
         // Retrofit으로 통신하기 위한 인스턴스 생성하기
-        Retrofit retrofit = new Retrofit.Builder()
+        Retrofit junyoung = new Retrofit.Builder()
                 .baseUrl("http://20.214.190.71/")
                 .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        engapi = retrofit.create(EngToKorInterface.class);
-        ttsapi = retrofit.create(TtsInterface.class);
+        // Retrofit으로 통신하기 위한 인스턴스 생성하기
+        Retrofit hoonseo = new Retrofit.Builder()
+                .baseUrl("http://20.249.75.188/")
+                .client(okHttpClient)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        engapi = junyoung.create(EngToKorInterface.class);
+        ttsapi = junyoung.create(TtsInterface.class);
+        questionapi = hoonseo.create(QuestionInterface.class);
+        answerapi = hoonseo.create(AnswerInterface.class);
+        summaryapi = hoonseo.create(SummarizeInterface.class);
+        dalleapi = hoonseo.create(DalleInterface.class);
 
         return view;
     }
@@ -128,10 +171,40 @@ public class Page1Fragment extends Fragment {
     // tts 인터페이스
     public interface TtsInterface {
         @Headers({"Content-Type: application/json"})
-        @POST("/tts_azure/")
+        @POST("/tts_kakao/")
         Call<ResponseBody> sendText(@Body RequestBody requestBody);
     }
 
+    // 질문 인터페이스
+    public interface QuestionInterface {
+        @Headers({"Content-Type: application/json"})
+        @POST("/make_question/")
+        Call<ResponseBody> sendText(@Body RequestBody requestBody);
+    }
+
+
+    // 답변 인터페이스
+    public interface AnswerInterface {
+        @Headers({"Content-Type: application/json"})
+        @POST("/make_answer/")
+        Call<ResponseBody> sendText(@Body RequestBody requestBody);
+    }
+
+
+    // Story Summarize 인터페이스
+    public interface SummarizeInterface {
+        @Headers({"Content-Type: application/json"})
+        @POST("/sentence_summarize/")
+        Call<ResponseBody> sendText(@Body RequestBody requestBody);
+    }
+
+
+    // Dall-e 인터페이스
+    public interface DalleInterface {
+        @Headers({"Content-Type: application/json"})
+        @POST("/make_image/")
+        Call<ResponseBody> sendText(@Body RequestBody requestBody);
+    }
 
 
     private void sendEngToServer(String story) {
@@ -155,6 +228,17 @@ public class Page1Fragment extends Fragment {
                             String result = response.body().string();
                             String[] story = result.split("\\*\\*");
 
+                            if (story.length == 6) {
+                                for (int i = 0; i < story.length - 1; i++) {
+                                    story[i] = story[i+1];
+                                }
+                                story = Arrays.copyOf(story, story.length - 1);
+
+                            } else if(story.length != 5) {
+                                MediaPlayer mediaPlayer = MediaPlayer.create(getContext(), R.raw.retry);
+                                mediaPlayer.start();
+                            }
+
                             Log.d("tag", "단락1:" + story[0]);
                             Log.d("tag", "단락2:" + story[1]);
                             Log.d("tag", "단락3:" + story[2]);
@@ -169,7 +253,6 @@ public class Page1Fragment extends Fragment {
                             sharedViewModel.setText3(story[2]);
                             sharedViewModel.setText4(story[3]);
                             sharedViewModel.setText5(story[4]);
-
 
                         } catch (IOException e) {
                             e.printStackTrace();
@@ -208,10 +291,8 @@ public class Page1Fragment extends Fragment {
                 @Override
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                     // 성공하면 해야할 반응
-
-                    Log.d("tag", "1");
                     if (response.isSuccessful()) {
-                        String fileUrl = "http://20.214.190.71/tts_result/azure";
+                        String fileUrl = "http://20.214.190.71/tts_result/kakao";
                         MediaPlayer mediaPlayer = new MediaPlayer();
 
                         try {
@@ -230,6 +311,261 @@ public class Page1Fragment extends Fragment {
                 public void onFailure(Call<ResponseBody> call, Throwable t) {
                     // 실패 시
                     Toast myToast = Toast.makeText(getActivity(), "실패", Toast.LENGTH_SHORT);
+                    myToast.show();
+                }
+            });
+        }
+        catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+    // id값을 전달해서 질문을 받아오는 기능
+    private void getQuestionFromServer(Object pid, Object cid) {
+        try{
+            // json 파일 만들기
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("p_id", pid);
+            jsonObject.put("c_id", cid);
+            // JSON 파일을 텍스트로 변환
+            String jsonStory = jsonObject.toString();
+            // request body를 json 포맷 텍스트로 생성한다
+            RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), jsonStory);
+
+            // 데이터 서버로 보내기
+            Call<ResponseBody> call = questionapi.sendText(requestBody);
+            call.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    // 성공하면 해야할 반응
+                    if(response.isSuccessful()) {
+                        try {
+                            String result = response.body().string();
+                            Log.d("tag", "" + result);
+
+                            // question 부분 포매팅
+                            String question_string = result.replaceAll("^\"|\"$", "")
+                                    .replaceAll("\\\\\"question\\\\", "\"question")
+                                    .replaceAll("\\\\\"", "\"")
+                                    .replaceAll("\\\\\\\\", "")
+                                    .replaceAll("\"\"", "")
+                                    .replaceAll(" ,", "");
+                            ObjectMapper quest = new ObjectMapper();
+                            Map<String, Object> questmap = quest.readValue(question_string, Map.class);
+                            Object questions = questmap.get("question");
+
+                            Object pid = questmap.get("p_id");
+                            Object cid = questmap.get("c_id");
+
+                            getAnswerFromServer(pid, cid);
+                            question = quest.convertValue(questions, new TypeReference<ArrayList<String>>() {});
+
+                            if (question.size() == 4) {
+                                question.remove(0);
+                            }
+                            sharedViewModel.setQuestion(question);
+                            Log.d("tag", "quest:" + question);
+                        }
+                        catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    else {
+                        ErrorFragment errorFragment = new ErrorFragment();
+                        FragmentTransaction ft = getFragmentManager().beginTransaction();
+                        errorFragment.show(ft, "error");
+                    }
+                }
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    // 실패 시
+                    Toast myToast = Toast.makeText(getActivity(),"실패", Toast.LENGTH_SHORT);
+                    myToast.show();
+                }
+            });
+        }
+        catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+    private void getAnswerFromServer(Object pid, Object cid) {
+        try{
+            // json 파일 만들기
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("p_id", pid);
+            jsonObject.put("c_id", cid);
+            // JSON 파일을 텍스트로 변환
+            String jsonStory = jsonObject.toString();
+            // request body를 json 포맷 텍스트로 생성한다
+            RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), jsonStory);
+
+            // 데이터 서버로 보내기
+            Call<ResponseBody> call = answerapi.sendText(requestBody);
+            call.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    // 성공하면 해야할 반응
+                    if(response.isSuccessful()) {
+                        try {
+                            String result = response.body().string();
+                            Log.d("tag", "" + result);
+
+                            // answer 부분 포매팅
+                            String answer_string = result.replaceAll("^\"|\"$", "")
+                                    .replaceAll("\\\\\"answer\\\\", "\"answer")
+                                    .replaceAll("\\\\\"", "\"")
+                                    .replaceAll("\\\\\\\\", "")
+                                    .replaceAll("\"\"", "")
+                                    .replaceAll(" ,", "");
+                            ObjectMapper ans = new ObjectMapper();
+                            Map<String, Object> ansmap = ans.readValue(answer_string, Map.class);
+                            Object answers = ansmap.get("answer");
+
+                            ans_p_id = ansmap.get("p_id");
+                            ans_c_id = ansmap.get("c_id");
+
+                            List<String> ansArray = ans.convertValue(answers, new TypeReference<ArrayList<String>>() {});
+                            if (ansArray.size() == 4) {
+                                ansArray.remove(0);
+                            }
+
+                            sendAnswerToServer(ans_p_id, ans_c_id);
+                            Log.d("tag", "ans:" + ansArray);
+                        }
+                        catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    else {
+                        ErrorFragment errorFragment = new ErrorFragment();
+                        FragmentTransaction ft = getFragmentManager().beginTransaction();
+                        errorFragment.show(ft, "error");
+                    }
+                }
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    // 실패 시
+                    Toast myToast = Toast.makeText(getActivity(),"실패", Toast.LENGTH_SHORT);
+                    myToast.show();
+                }
+            });
+        }
+        catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // 생성된 동화의 id값을 보내고 요약된 결과를 받아옴
+    private void sendAnswerToServer(Object pid, Object cid) {
+        try {
+            // json 파일 만들기
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("p_id", pid);
+            jsonObject.put("c_id", cid);
+            // JSON 파일을 텍스트로 변환
+            String jsonStory = jsonObject.toString();
+            // request body를 json 포맷 텍스트로 생성한다
+            RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), jsonStory);
+
+            // 데이터 서버로 보내기
+            Call<ResponseBody> call = summaryapi.sendText(requestBody);
+            call.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    // 성공하면 해야할 반응
+                    if (response.isSuccessful()) {
+                        try {
+                            String result = response.body().string();
+
+                            // 받아온 결과를 사용할 수 있는 형태로 포매팅
+                            String summ = result.replaceAll("^\"|\"$", "")
+                                    .replaceAll("\\\\\"summarized\\\\", "\"summarized")
+                                    .replaceAll("\\\\\"", "\"")
+                                    .replaceAll("\\\\\\\\", "")
+                                    .replaceAll("\"\"", "")
+                                    .replaceAll(" ,", "");
+
+                            Log.d("tag", "" + summ);
+                            ObjectMapper object = new ObjectMapper();
+                            Map<String, Object> map = object.readValue(summ, Map.class);
+                            Object sum = map.get("summarized");
+
+                            Log.d("tag", "sentence 요약: " + sum);
+
+                            ArrayList<String> summArray = object.convertValue(sum, new TypeReference<ArrayList<String>>() {});
+
+                            sendSummaryToServer(summArray.get(0));
+                            sendSummaryToServer(summArray.get(1));
+                            sendSummaryToServer(summArray.get(2));
+
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        ErrorFragment errorFragment = new ErrorFragment();
+                        FragmentTransaction ft = getFragmentManager().beginTransaction();
+                        errorFragment.show(ft, "error");
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    // 실패 시
+                    Toast myToast = Toast.makeText(getActivity(), "실패", Toast.LENGTH_SHORT);
+                    myToast.show();
+                }
+            });
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+    private void sendSummaryToServer(String summary) {
+        try{
+            // json 파일 만들기
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("content", summary);
+            // JSON 파일을 텍스트로 변환
+            String jsonStt = jsonObject.toString();
+            // request body를 json 포맷 텍스트로 생성한다
+            RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), jsonStt);
+
+            // 데이터 서버로 보내기
+            Call<ResponseBody> call = dalleapi.sendText(requestBody);
+            call.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    // 성공하면 해야할 반응
+                    if(response.isSuccessful()) {
+                        try {
+                            String result = response.body().string();
+                            Log.d("tag", "문장 달리 : " + result);
+
+                            ObjectMapper object = new ObjectMapper();
+                            JsonNode root = object.readTree(result);
+                            String url = root.get("url").asText();
+
+                            List<String> urlList = new ArrayList<>();
+                            urlList.add(url);
+
+                            if (urlList.size() == 3){
+                                sharedViewModel.setUrl(urlList);
+
+                            }
+
+                        }
+                        catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    else {
+                        ErrorFragment errorFragment = new ErrorFragment();
+                        FragmentTransaction ft = getFragmentManager().beginTransaction();
+                        errorFragment.show(ft, "error");
+                    }
+                }
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    // 실패 시
+                    Toast myToast = Toast.makeText(getActivity(),"실패", Toast.LENGTH_SHORT);
                     myToast.show();
                 }
             });

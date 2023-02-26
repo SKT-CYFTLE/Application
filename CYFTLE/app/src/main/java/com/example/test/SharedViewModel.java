@@ -14,6 +14,14 @@ public class SharedViewModel extends ViewModel {
     private final MutableLiveData<String> text4 = new MutableLiveData<>();
     private final MutableLiveData<String> text5 = new MutableLiveData<>();
     private final MutableLiveData<List<String>> arr = new MutableLiveData<>();
+    private final MutableLiveData<Object> p_id = new MutableLiveData<>();
+    private final MutableLiveData<Object> c_id = new MutableLiveData<>();
+    private final MutableLiveData<List<String>> question = new MutableLiveData<>();
+    private final MutableLiveData<List<String>> answer = new MutableLiveData<>();
+    private final MutableLiveData<String> ans_str = new MutableLiveData<>();
+    private final MutableLiveData<List<String>> url = new MutableLiveData<>();
+    private final MutableLiveData<String> image = new MutableLiveData<>();
+
 
     public LiveData<String> getStt() {
         return stt;
@@ -67,5 +75,45 @@ public class SharedViewModel extends ViewModel {
     }
     public void setArr(List<String> ar) {
         arr.setValue(ar);
+    }
+    public LiveData<Object> getPid() {
+        return p_id;
+    }
+    public void setPid(Object pid) {
+        p_id.setValue(pid);
+    }
+    public LiveData<Object> getCid() {
+        return c_id;
+    }
+    public void setCid(Object cid) {
+        c_id.setValue(cid);
+    }
+    public LiveData<List<String>> getQuestion() {
+        return question;
+    }
+    public void setQuestion(List<String> arr) {
+        question.setValue(arr);
+    }
+    public LiveData<List<String>> getAnswer() {
+        return answer;
+    }
+    public void setAnswer(List<String> arr) {
+        answer.setValue(arr);
+    }
+    public LiveData<String> getAns() {
+        return ans_str;
+    }
+    public void setAns(String str) {
+        ans_str.setValue(str);
+    }
+    public LiveData<List<String>> getUrl() {
+        return url;
+    }
+    public void setUrl(List<String> ur) {
+        url.setValue(ur);
+    }
+    public LiveData<String> getImage() {return image;}
+    public void setImage(String str) {
+        image.setValue(str);
     }
 }

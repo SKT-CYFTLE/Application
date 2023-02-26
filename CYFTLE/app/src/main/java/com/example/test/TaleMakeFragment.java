@@ -1,5 +1,6 @@
 package com.example.test;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -50,8 +51,10 @@ public class TaleMakeFragment extends Fragment {
     private SharedViewModel sharedViewModel;
     private Button taleBtn;
     private String full;
-    private Object p_id;
-    private Object c_id;
+    private Object full_p_id;
+    private Object full_c_id;
+    private Object sum_p_id;
+    private Object sum_c_id;
     private List<String> urlList = new ArrayList<>();
     private LoadingFragment loadingFragment = new LoadingFragment();
 
@@ -93,17 +96,18 @@ public class TaleMakeFragment extends Fragment {
                 .build();
 
         // Retrofit으로 통신하기 위한 인스턴스 생성하기
-        Retrofit retrofit = new Retrofit.Builder()
+        Retrofit junyoung = new Retrofit.Builder()
                 .baseUrl("http://20.214.190.71/")
                 .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
+
         // api interface 인스턴스 생성
-        korapi = retrofit.create(KorTOEngInterface.class);
-        storyapi = retrofit.create(StoryInterface.class);
-        summarizeapi = retrofit.create(SummarizeInterface.class);
-        dalleapi = retrofit.create(DalleInterface.class);
+        korapi = junyoung.create(KorTOEngInterface.class);
+        storyapi = junyoung.create(StoryInterface.class);
+        summarizeapi = junyoung.create(SummarizeInterface.class);
+        dalleapi = junyoung.create(DalleInterface.class);
 
         return view;
     }
@@ -214,17 +218,21 @@ public class TaleMakeFragment extends Fragment {
                                     .replaceAll("\\\\\"", "\"")
                                     .replaceAll("\\\\\\\\n\\\\\\\\n", "**")
                                     .replaceAll("\\\\\\\\", "");
+
+                            int idx = rest.indexOf("\"p_id");
+                            rest = "{\"full\": \"" + rest.substring(10, idx-3).replace("\"", "@") + "\", " + rest.substring(idx);
+
                             ObjectMapper objectMapper = new ObjectMapper();
                             Map<String, Object> map = objectMapper.readValue(rest, Map.class);
                             Object value = map.get("full");
 
-                            p_id = map.get("p_id");
-                            c_id = map.get("c_id");
+                            full_p_id = map.get("p_id");
+                            full_c_id = map.get("c_id");
 
-                            full = value.toString();
+                            full = value.toString().replaceAll("@", "\"");
                             sharedViewModel.setStory(full);
                             // 요약문을 만들어 달라고 id 값들을 전달함
-                            sendStoryToServer(p_id, c_id);
+                            sendStoryToServer(full_p_id, full_c_id);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -281,11 +289,13 @@ public class TaleMakeFragment extends Fragment {
                             ObjectMapper object = new ObjectMapper();
                             Map<String, Object> map = object.readValue(summ, Map.class);
                             Object sum = map.get("summarized");
-                            String suma = sum.toString();
 
+                            sum_p_id = map.get("p_id");
+                            sum_c_id = map.get("c_id");
 
-                            p_id = map.get("p_id");
-                            c_id = map.get("c_id");
+                            sharedViewModel.setPid(sum_p_id);
+                            sharedViewModel.setCid(sum_c_id);
+
                             // 배열에 요약문들을 담아둠
                             ArrayList<String> summArray = object.convertValue(sum, new TypeReference<ArrayList<String>>() {});
 
@@ -345,6 +355,8 @@ public class TaleMakeFragment extends Fragment {
                         try {
                             String result = response.body().string();
 
+                            Log.d("tag", "문단 달리 : " + result);
+
                             ObjectMapper object = new ObjectMapper();
                             JsonNode root = object.readTree(result);
                             String url = root.get("url").asText();
@@ -359,14 +371,20 @@ public class TaleMakeFragment extends Fragment {
                                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                                 doneFragment.show(ft, "done");
                             } else if (urlList.size() == 6) {
-                                List<String> except = urlList.subList(2, 7);
+                                urlList.remove(0);
 
-                                sharedViewModel.setArr(except);
+                                sharedViewModel.setArr(urlList);
                                 loadingFragment.dismiss();
                                 DoneFragment doneFragment = new DoneFragment();
                                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                                 doneFragment.show(ft, "done");
                             }
+//                            else if (urlList.size() == 4) {
+//                                loadingFragment.dismiss();
+//                                ErrorFragment errorFragment = new ErrorFragment();
+//                                FragmentTransaction ft = getFragmentManager().beginTransaction();
+//                                errorFragment.show(ft, "error");
+//                            }
                         }
                         catch (IOException e) {
                             e.printStackTrace();
