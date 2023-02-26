@@ -68,6 +68,7 @@ public class Page1Fragment extends Fragment {
     private List<String> answer;
     private SummarizeInterface summaryapi;
     private DalleInterface dalleapi;
+    private List<String> urlList = new ArrayList<>();
 
     // stt로 가져온 데이터 서버로 보내기
     @Override
@@ -545,12 +546,10 @@ public class Page1Fragment extends Fragment {
                             JsonNode root = object.readTree(result);
                             String url = root.get("url").asText();
 
-                            List<String> urlList = new ArrayList<>();
                             urlList.add(url);
 
                             if (urlList.size() == 3){
                                 sharedViewModel.setUrl(urlList);
-
                             }
 
                         }

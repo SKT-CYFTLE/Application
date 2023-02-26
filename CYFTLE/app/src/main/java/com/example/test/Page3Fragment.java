@@ -75,7 +75,7 @@ public class Page3Fragment extends Fragment {
         // textview 스크롤 가능하게 한다
         tale.setMovementMethod(new ScrollingMovementMethod());
         // 텍스트뷰에 본문을 표시
-        sharedViewModel.getText5().observe(getViewLifecycleOwner(), new Observer<String>() {
+        sharedViewModel.getText3().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
                 tale.setText(s);
@@ -86,7 +86,7 @@ public class Page3Fragment extends Fragment {
         sharedViewModel.getArr().observe(getViewLifecycleOwner(), new Observer<List<String>>() {
             @Override
             public void onChanged(List<String> urlList) {
-                url = urlList.get(4);
+                url = urlList.get(2);
 
                 tale_image = view.findViewById(R.id.tale_image);
                 Picasso.get().load(url).into(tale_image);
@@ -97,7 +97,6 @@ public class Page3Fragment extends Fragment {
             @Override
             public void onChanged(List<String> answer) {
                 ans1 = answer.get(0);
-                Log.d("tag", "생성된 답을 받아오는 곳 :" + ans1);
                 ans2 = answer.get(1);
                 ans3 = answer.get(2);
             }
@@ -117,14 +116,7 @@ public class Page3Fragment extends Fragment {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        // Retrofit으로 통신하기 위한 인스턴스 생성하기
-        Retrofit hoonseo = new Retrofit.Builder()
-                .baseUrl("http://20.249.75.188/")
-                .client(okHttpClient)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        ttsapi = hoonseo.create(TtsInterface.class);
+        ttsapi = junyoung.create(TtsInterface.class);
         engapi = junyoung.create(EngToKorInterface.class);
 
         return view;
@@ -163,7 +155,7 @@ public class Page3Fragment extends Fragment {
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                     // 성공하면 해야할 반응
                     if (response.isSuccessful()) {
-                        String fileUrl = "http://20.249.75.188/tts_result/kakao";
+                        String fileUrl = "http://20.214.190.71/tts_result/kakao";
 
                         MediaPlayer mediaPlayer = new MediaPlayer();
 

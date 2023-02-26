@@ -124,14 +124,7 @@ public class Page2Fragment extends Fragment {
                 .build();
 
 
-        // Retrofit으로 통신하기 위한 인스턴스 생성하기
-        Retrofit hoonseo = new Retrofit.Builder()
-                .baseUrl("http://20.249.75.188/")
-                .client(okHttpClient)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        ttsapi = hoonseo.create(TtsInterface.class);
+        ttsapi = junyoung.create(TtsInterface.class);
         engapi = junyoung.create(EngToKorInterface.class);
 
         return view;
@@ -168,7 +161,7 @@ public class Page2Fragment extends Fragment {
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                     // 성공하면 해야할 반응
                     if (response.isSuccessful()) {
-                        String fileUrl = "http://20.249.75.188/tts_result/kakao";
+                        String fileUrl = "http://20.214.190.71/tts_result/kakao";
                         // mediaplayer 선언
                         MediaPlayer mediaPlayer = new MediaPlayer();
 
