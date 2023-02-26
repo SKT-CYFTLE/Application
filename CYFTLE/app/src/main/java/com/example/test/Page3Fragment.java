@@ -97,6 +97,7 @@ public class Page3Fragment extends Fragment {
             @Override
             public void onChanged(List<String> answer) {
                 ans1 = answer.get(0);
+                Log.d("tag", "생성된 답을 받아오는 곳 :" + ans1);
                 ans2 = answer.get(1);
                 ans3 = answer.get(2);
             }
@@ -124,7 +125,7 @@ public class Page3Fragment extends Fragment {
                 .build();
 
         ttsapi = hoonseo.create(TtsInterface.class);
-//        engapi = junyoung.create(EngToKorInterface.class);
+        engapi = junyoung.create(EngToKorInterface.class);
 
         return view;
     }

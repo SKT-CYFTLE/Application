@@ -65,6 +65,7 @@ public class Page1Fragment extends Fragment {
     private QuestionInterface questionapi;
     private AnswerInterface answerapi;
     private List<String> question;
+    private List<String> answer;
     private SummarizeInterface summaryapi;
     private DalleInterface dalleapi;
 
@@ -423,13 +424,14 @@ public class Page1Fragment extends Fragment {
                             ans_p_id = ansmap.get("p_id");
                             ans_c_id = ansmap.get("c_id");
 
-                            List<String> ansArray = ans.convertValue(answers, new TypeReference<ArrayList<String>>() {});
-                            if (ansArray.size() == 4) {
-                                ansArray.remove(0);
+                            answer = ans.convertValue(answers, new TypeReference<ArrayList<String>>() {});
+                            if (answer.size() == 4) {
+                                answer.remove(0);
                             }
+                            sharedViewModel.setAnswer(answer);
 
                             sendAnswerToServer(ans_p_id, ans_c_id);
-                            Log.d("tag", "ans:" + ansArray);
+                            Log.d("tag", "ans:" + answer);
                         }
                         catch (IOException e) {
                             e.printStackTrace();

@@ -38,7 +38,6 @@ public class Page6Fragment extends Fragment {
             @Override
             public void onChanged(List<String> question) {
                 quest1 = question.get(0);
-                Log.d("tag", "질문 1: " + quest1);
                 quest2 = question.get(1);
                 quest3 = question.get(2);
 
