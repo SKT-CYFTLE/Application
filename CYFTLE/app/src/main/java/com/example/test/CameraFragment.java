@@ -61,7 +61,6 @@ public class CameraFragment extends Fragment {
     private ImageView photoImageView;
     private FaceFragment checkFragment = new FaceFragment();
     private SharedViewModel sharedViewModel;
-    private String img;
     private FaceInterface faceapi;
     private File photoFile = null;
 
@@ -217,19 +216,27 @@ public class CameraFragment extends Fragment {
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                     if (response.isSuccessful()) {
                         try {
-                            String result = response.body().string();
+                            String result = response.body().string().replaceAll("^\"|\"$", "");
                             Log.d("tag", "face 결과물 : " + result);
 
                             checkFragment.dismiss();
 
-                            if(result == "\"\"adult\"\"") {
-                                Log.d("tag", "adult라면");
+                            if(result.equals("0")) {
+                                ChildrenFragment childrenFragment = new ChildrenFragment();
+                                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                                childrenFragment.show(ft, "children");
+
+                                sharedViewModel.setCamera("children");
+                            } else if (result.equals("1")) {
                                 AdultFragment adultFragment = new AdultFragment();
                                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                                 adultFragment.show(ft, "adult");
-                            }
-                            else {
-                                Log.d("tag", "에러라면");
+
+                                sharedViewModel.setCamera("adult");
+                            } else {
+                                CameraErrorFragment cameraErrorFragment = new CameraErrorFragment();
+                                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                                cameraErrorFragment.show(ft, "error");
                             }
 
                         } catch (IOException e) {

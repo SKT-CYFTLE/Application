@@ -56,6 +56,7 @@ public class TaleMakeFragment extends Fragment {
     private Object sum_c_id;
     private List<String> urlList = new ArrayList<>();
     private LoadingFragment loadingFragment = new LoadingFragment();
+    public String camera;
 
     // stt로 가져온 데이터 서버로 보내기
     @Override
@@ -77,6 +78,12 @@ public class TaleMakeFragment extends Fragment {
                         loadingFragment.show(ft, "loading");
                     }
                 });
+            }
+        });
+        sharedViewModel.getCamera().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                camera = s;
             }
         });
     }
