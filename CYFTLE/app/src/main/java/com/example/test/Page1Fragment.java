@@ -66,8 +66,10 @@ public class Page1Fragment extends Fragment {
     private List<String> question;
     private List<String> answer;
     private SummarizeInterface summaryapi;
-    private DalleInterface dalleapi;
+    private AdultDalleInterface adltdalleapi;
+    private ChildDalleInterface childdalleapi;
     private List<String> urlList = new ArrayList<>();
+    public String camera;
 
     // stt로 가져온 데이터 서버로 보내기
     @Override
@@ -104,6 +106,12 @@ public class Page1Fragment extends Fragment {
             public void onChanged(Object cid) {
                 c_id = cid;
                 Log.d("tag", "cid" + c_id);
+            }
+        });
+        sharedViewModel.getCamera().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                camera = s;
             }
         });
     }
@@ -155,7 +163,8 @@ public class Page1Fragment extends Fragment {
         questionapi = hoonseo.create(QuestionInterface.class);
         answerapi = hoonseo.create(AnswerInterface.class);
         summaryapi = hoonseo.create(SummarizeInterface.class);
-        dalleapi = hoonseo.create(DalleInterface.class);
+        adltdalleapi = hoonseo.create(AdultDalleInterface.class);
+        childdalleapi = hoonseo.create(ChildDalleInterface.class);
 
         return view;
     }
@@ -201,12 +210,17 @@ public class Page1Fragment extends Fragment {
 
 
     // Dall-e 인터페이스
-    public interface DalleInterface {
+    public interface AdultDalleInterface {
         @Headers({"Content-Type: application/json"})
         @POST("/make_image/adult")
         Call<ResponseBody> sendText(@Body RequestBody requestBody);
     }
-
+    // Dall-e 인터페이스
+    public interface ChildDalleInterface {
+        @Headers({"Content-Type: application/json"})
+        @POST("/make_image/child")
+        Call<ResponseBody> sendText(@Body RequestBody requestBody);
+    }
 
     private void sendEngToServer(String story) {
         try {
@@ -495,10 +509,15 @@ public class Page1Fragment extends Fragment {
 
                             ArrayList<String> summArray = object.convertValue(sum, new TypeReference<ArrayList<String>>() {});
 
-                            sendSummaryToServer(summArray.get(0));
-                            sendSummaryToServer(summArray.get(1));
-                            sendSummaryToServer(summArray.get(2));
-
+                            if(camera.equals("children")) {
+                                sendChildSumToServer(summArray.get(0));
+                                sendChildSumToServer(summArray.get(1));
+                                sendChildSumToServer(summArray.get(2));
+                            } else if (camera.equals("adult")) {
+                                sendAdultSumToServer(summArray.get(0));
+                                sendAdultSumToServer(summArray.get(1));
+                                sendAdultSumToServer(summArray.get(2));
+                            }
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -520,7 +539,7 @@ public class Page1Fragment extends Fragment {
             e.printStackTrace();
         }
     }
-    private void sendSummaryToServer(String summary) {
+    private void sendAdultSumToServer(String summary) {
         try{
             // json 파일 만들기
             JSONObject jsonObject = new JSONObject();
@@ -531,7 +550,61 @@ public class Page1Fragment extends Fragment {
             RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), jsonStt);
 
             // 데이터 서버로 보내기
-            Call<ResponseBody> call = dalleapi.sendText(requestBody);
+            Call<ResponseBody> call = adltdalleapi.sendText(requestBody);
+            call.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    // 성공하면 해야할 반응
+                    if(response.isSuccessful()) {
+                        try {
+                            String result = response.body().string();
+                            Log.d("tag", "문장 달리 : " + result);
+
+                            ObjectMapper object = new ObjectMapper();
+                            JsonNode root = object.readTree(result);
+                            String url = root.get("url").asText();
+
+                            urlList.add(url);
+
+                            if (urlList.size() == 3){
+                                sharedViewModel.setUrl(urlList);
+                            }
+
+                        }
+                        catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    else {
+                        ErrorFragment errorFragment = new ErrorFragment();
+                        FragmentTransaction ft = getFragmentManager().beginTransaction();
+                        errorFragment.show(ft, "error");
+                    }
+                }
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    // 실패 시
+                    Toast myToast = Toast.makeText(getActivity(),"실패", Toast.LENGTH_SHORT);
+                    myToast.show();
+                }
+            });
+        }
+        catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+    private void sendChildSumToServer(String summary) {
+        try{
+            // json 파일 만들기
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("content", summary);
+            // JSON 파일을 텍스트로 변환
+            String jsonStt = jsonObject.toString();
+            // request body를 json 포맷 텍스트로 생성한다
+            RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), jsonStt);
+
+            // 데이터 서버로 보내기
+            Call<ResponseBody> call = childdalleapi.sendText(requestBody);
             call.enqueue(new Callback<ResponseBody>() {
                 @Override
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
