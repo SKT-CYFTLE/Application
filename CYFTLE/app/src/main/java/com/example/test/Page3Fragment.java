@@ -65,9 +65,8 @@ public class Page3Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 getTTSFromServer(ttsstory);
+
                 sendEngToServer(quest1);
-                sendEngToServer(quest2);
-                sendEngToServer(quest3);
             }
         });
 
@@ -201,11 +200,17 @@ public class Page3Fragment extends Fragment {
                             String result = response.body().string();
                             questList.add(result);
 
+                            if(questList.size() == 1) {
+                                sendEngToServer(quest2);
+                            }
+                            else if(questList.size() == 2) {
+                                sendEngToServer(quest3);
+                            }
+
                             Log.d("tag", "번역된 문제:" + questList);
 
                             if (questList.size() == 3){
                                 sharedViewModel.setQuestion(questList);
-
                             }
 
                         } catch (IOException e) {

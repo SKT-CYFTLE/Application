@@ -68,8 +68,6 @@ public class Page4Fragment extends Fragment {
             public void onClick(View v) {
                 getTTSFromServer(ttsstory);
                 sendEngToServer(ans1);
-                sendEngToServer(ans2);
-                sendEngToServer(ans3);
             }
         });
 
@@ -199,6 +197,13 @@ public class Page4Fragment extends Fragment {
                         try {
                             String result = response.body().string();
                             answerList.add(result);
+
+                            if(answerList.size() == 1) {
+                                sendEngToServer(ans2);
+                            }
+                            else if(answerList.size() == 2) {
+                                sendEngToServer(ans3);
+                            }
 
                             Log.d("tag", "번역된 정답:" + answerList);
 

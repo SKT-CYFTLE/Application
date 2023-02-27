@@ -14,7 +14,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_margin="50dp"
         android:fontFamily="@font/applesdgothicneoeb"
-        android:text="우리 함께\n동화의 세계로\n떠나볼까요?"
+        android:text="우리 함께\n동화의 세계로 떠나볼까요?"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="30sp" />
