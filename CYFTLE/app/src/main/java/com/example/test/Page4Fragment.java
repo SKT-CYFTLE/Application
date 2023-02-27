@@ -21,6 +21,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -45,6 +46,11 @@ public class Page4Fragment extends Fragment {
     private String url;
     public String ttsstory;
     private TtsInterface ttsapi;
+    private EngToKorInterface engapi;
+    public String ans1;
+    public String ans2;
+    public String ans3;
+    private List<String> answerList = new ArrayList<>();
     public Page4Fragment() {
         // Required empty public constructor
     }
@@ -61,6 +67,9 @@ public class Page4Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 getTTSFromServer(ttsstory);
+                sendEngToServer(ans1);
+                sendEngToServer(ans2);
+                sendEngToServer(ans3);
             }
         });
 
@@ -85,6 +94,14 @@ public class Page4Fragment extends Fragment {
                 Picasso.get().load(url).into(tale_image);
             }
         });
+        sharedViewModel.getAnswer().observe(getViewLifecycleOwner(), new Observer<List<String>>() {
+            @Override
+            public void onChanged(List<String> answer) {
+                ans1 = answer.get(0);
+                ans2 = answer.get(1);
+                ans3 = answer.get(2);
+            }
+        });
 
         // timeout setting 해주기
         OkHttpClient okHttpClient = new OkHttpClient().newBuilder()
@@ -101,6 +118,7 @@ public class Page4Fragment extends Fragment {
                 .build();
 
         ttsapi = junyoung.create(TtsInterface.class);
+        engapi = junyoung.create(EngToKorInterface.class);
 
         return view;
     }
@@ -109,6 +127,12 @@ public class Page4Fragment extends Fragment {
     public interface TtsInterface {
         @Headers({"Content-Type: application/json"})
         @POST("/tts_kakao/")
+        Call<ResponseBody> sendText(@Body RequestBody requestBody);
+    }
+    // 영어 한국어로 변환해주는 인터페이스
+    public interface EngToKorInterface {
+        @Headers({"Content-Type: application/json"})
+        @POST("/translating/?lang=eng")
         Call<ResponseBody> sendText(@Body RequestBody requestBody);
     }
 
@@ -141,6 +165,53 @@ public class Page4Fragment extends Fragment {
                         } catch (IOException e) {
                             Log.d("tag", "Error playing audio from URL: " + e.getMessage());
                         }
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    // 실패 시
+                    Toast myToast = Toast.makeText(getActivity(), "실패", Toast.LENGTH_SHORT);
+                    myToast.show();
+                }
+            });
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+    private void sendEngToServer(String answer) {
+        try {
+            // json 파일 만들기
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("content", answer);
+            // JSON 파일을 텍스트로 변환
+            String jsonStory = jsonObject.toString();
+            // request body를 json 포맷 텍스트로 생성한다
+            RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), jsonStory);
+
+            // 데이터 서버로 보내기
+            Call<ResponseBody> call = engapi.sendText(requestBody);
+            call.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    // 성공하면 해야할 반응
+                    if (response.isSuccessful()) {
+                        try {
+                            String result = response.body().string();
+                            answerList.add(result);
+
+                            Log.d("tag", "번역된 정답:" + answerList);
+
+                            if (answerList.size() == 3){
+                                sharedViewModel.setAnswer(answerList);
+                            }
+
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        Toast myToast = Toast.makeText(getActivity(), "에러", Toast.LENGTH_SHORT);
+                        myToast.show();
                     }
                 }
 

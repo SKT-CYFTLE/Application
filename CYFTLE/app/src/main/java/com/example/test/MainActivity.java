@@ -22,13 +22,10 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private String[] phrases = {"겨울엔 역시 붕어빵이지!\n 군고구마도 좋고~\n 고구마 라떼도 좋아~\n 넌 어때?",
-            "하루에 하나씩 나의\n 유용한 기능을 알아가볼래?\n 오늘은 재밌는 tv 보여줄게~",
             "클래식을 들으면\n 마음이 차분해져서 좋아~\n 지금 클래식 감상 어때?",
             "겨울바람에 꽁꽁 얼어 있어?\n 그래도 움츠려있기 보단 힘차게\n 운동해보는 거 어때?",
             "밥친구 영상 고르기 힘들지?\n 재밌는 걸로 골라서 보여줄게~",
-            "지금 좀 심심하지 않아?\n 뭘하면 좋을까?",
             "이제 뭐 할 거야?",
-            "멍하니 흘려버리는\n시간이 아깝다면\n 팟캐스트 듣는 거 어때?"
     };
     private List<Integer> usedIndices = new ArrayList<>();
 
@@ -74,16 +71,14 @@ public class MainActivity extends AppCompatActivity {
                 String phrase = phrases[index];
                 if (index == 0) {
                     image.setImageResource(imageList.get(4));
-                } else if (index == 2) {
+                } else if (index == 1) {
                     image.setImageResource(imageList.get(0));
-                } else if (index == 3) {
+                } else if (index == 2) {
                     image.setImageResource(imageList.get(1));
-                } else if (index == 4) {
+                } else if (index == 3) {
                     image.setImageResource(imageList.get(2));
-                } else if (index == 6) {
+                } else if (index == 4) {
                     image.setImageResource(imageList.get(3));
-                } else {
-                    image.setImageResource(imageList.get(5));
                 }
 
                 txt.setText(phrase);

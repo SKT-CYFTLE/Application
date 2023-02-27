@@ -1,6 +1,5 @@
 package com.example.test;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -125,7 +124,7 @@ public class TaleMakeFragment extends Fragment {
     // Make Story 인터페이스
     public interface StoryInterface {
         @Headers({"Content-Type: application/json"})
-        @POST("/make_story/children")
+        @POST("/make_story/adult")
         Call<ResponseBody> sendText(@Body RequestBody requestBody);
     }
 
@@ -141,7 +140,7 @@ public class TaleMakeFragment extends Fragment {
     // Dall-e 인터페이스
     public interface DalleInterface {
         @Headers({"Content-Type: application/json"})
-        @POST("/make_image/")
+        @POST("/make_image/adult")
         Call<ResponseBody> sendText(@Body RequestBody requestBody);
     }
 

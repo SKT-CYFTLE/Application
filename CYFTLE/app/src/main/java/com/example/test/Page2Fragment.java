@@ -12,12 +12,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
@@ -25,9 +22,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.MediaType;
@@ -47,15 +42,10 @@ import retrofit2.http.POST;
 public class Page2Fragment extends Fragment {
     private TextView tale;
     private ImageView tale_image;
-    private EngToKorInterface engapi;
     private SharedViewModel sharedViewModel;
     private String url;
     public String ttsstory;
     private TtsInterface ttsapi;
-    public String quest1;
-    public String quest2;
-    public String quest3;
-    private List<String> questList = new ArrayList<>();
 
 
     @Override
@@ -71,9 +61,6 @@ public class Page2Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 getTTSFromServer(ttsstory);
-                sendEngToServer(quest1);
-                sendEngToServer(quest2);
-                sendEngToServer(quest3);
             }
         });
 
@@ -98,15 +85,6 @@ public class Page2Fragment extends Fragment {
                 Picasso.get().load(url).into(tale_image);
             }
         });
-        // 영어로된 question 받아오기
-        sharedViewModel.getQuestion().observe(getViewLifecycleOwner(), new Observer<List<String>>() {
-            @Override
-            public void onChanged(List<String> question) {
-                quest1 = question.get(0);
-                quest2 = question.get(1);
-                quest3 = question.get(2);
-            }
-        });
 
 
         // timeout setting 해주기
@@ -125,15 +103,8 @@ public class Page2Fragment extends Fragment {
 
 
         ttsapi = junyoung.create(TtsInterface.class);
-        engapi = junyoung.create(EngToKorInterface.class);
 
         return view;
-    }
-    // 영어 한국어로 변환해주는 인터페이스
-    public interface EngToKorInterface {
-        @Headers({"Content-Type: application/json"})
-        @POST("/translating/?lang=eng")
-        Call<ResponseBody> sendText(@Body RequestBody requestBody);
     }
 
 
@@ -176,55 +147,6 @@ public class Page2Fragment extends Fragment {
                     }
                 }
 
-
-                @Override
-                public void onFailure(Call<ResponseBody> call, Throwable t) {
-                    // 실패 시
-                    Toast myToast = Toast.makeText(getActivity(), "실패", Toast.LENGTH_SHORT);
-                    myToast.show();
-                }
-            });
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void sendEngToServer(String question) {
-        try {
-            // json 파일 만들기
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("content", question);
-            // JSON 파일을 텍스트로 변환
-            String jsonStory = jsonObject.toString();
-            // request body를 json 포맷 텍스트로 생성한다
-            RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), jsonStory);
-
-            // 데이터 서버로 보내기
-            Call<ResponseBody> call = engapi.sendText(requestBody);
-            call.enqueue(new Callback<ResponseBody>() {
-                @Override
-                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                    // 성공하면 해야할 반응
-                    if (response.isSuccessful()) {
-                        try {
-                            String result = response.body().string();
-                            questList.add(result);
-
-                            Log.d("tag", "번역된 문제:" + questList);
-
-                            if (questList.size() == 3){
-                                sharedViewModel.setQuestion(questList);
-
-                            }
-
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    } else {
-                        Toast myToast = Toast.makeText(getActivity(), "에러", Toast.LENGTH_SHORT);
-                        myToast.show();
-                    }
-                }
 
                 @Override
                 public void onFailure(Call<ResponseBody> call, Throwable t) {

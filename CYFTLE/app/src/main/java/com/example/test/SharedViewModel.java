@@ -21,6 +21,7 @@ public class SharedViewModel extends ViewModel {
     private final MutableLiveData<String> ans_str = new MutableLiveData<>();
     private final MutableLiveData<List<String>> url = new MutableLiveData<>();
     private final MutableLiveData<String> image = new MutableLiveData<>();
+    private final MutableLiveData<String> camera = new MutableLiveData<>();
 
 
     public LiveData<String> getStt() {
@@ -115,5 +116,9 @@ public class SharedViewModel extends ViewModel {
     public LiveData<String> getImage() {return image;}
     public void setImage(String str) {
         image.setValue(str);
+    }
+    public LiveData<String> getCamera() {return camera;}
+    public void setCamera(String str) {
+        camera.setValue(str);
     }
 }

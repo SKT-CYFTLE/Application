@@ -1,6 +1,5 @@
 package com.example.test;
 
-import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -204,7 +203,7 @@ public class Page1Fragment extends Fragment {
     // Dall-e 인터페이스
     public interface DalleInterface {
         @Headers({"Content-Type: application/json"})
-        @POST("/make_image/")
+        @POST("/make_image/adult")
         Call<ResponseBody> sendText(@Body RequestBody requestBody);
     }
 

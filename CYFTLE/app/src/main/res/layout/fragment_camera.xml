@@ -42,17 +42,26 @@
             tools:srcCompat="@tools:sample/avatars" />
     </FrameLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="사진을 찍으려면 회색 박스를 눌러주세요!"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:textSize="17sp"
+        android:fontFamily="@font/applesdgothicneom"/>
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/picture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/alarm_radius"
         android:fontFamily="@font/applesdgothicneoeb"
         android:paddingLeft="25dp"
         android:paddingRight="25dp"
-        android:text="촬영"
+        android:text="추천 받기"
         android:textColor="#3333FF"
         android:textSize="20sp" />
 

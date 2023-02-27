@@ -1,7 +1,5 @@
 package com.example.test;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.LayoutInflater;

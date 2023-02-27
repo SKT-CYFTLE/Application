@@ -96,6 +96,18 @@
         </ScrollView>
     </FrameLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:fontFamily="@font/applesdgothicneom"
+        android:text="정답을 보려면 문제를 눌러주세요!"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout2" />
+
     <ImageView
         android:layout_width="200dp"
         android:layout_height="200dp"

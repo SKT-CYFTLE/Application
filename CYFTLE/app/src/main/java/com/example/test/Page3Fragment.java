@@ -47,10 +47,10 @@ public class Page3Fragment extends Fragment {
     public String ttsstory;
     private TtsInterface ttsapi;
     private EngToKorInterface engapi;
-    public String ans1;
-    public String ans2;
-    public String ans3;
-    private List<String> answerList = new ArrayList<>();
+    public String quest1;
+    public String quest2;
+    public String quest3;
+    private List<String> questList = new ArrayList<>();
 
 
     @Override
@@ -65,9 +65,9 @@ public class Page3Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 getTTSFromServer(ttsstory);
-                sendEngToServer(ans1);
-                sendEngToServer(ans2);
-                sendEngToServer(ans3);
+                sendEngToServer(quest1);
+                sendEngToServer(quest2);
+                sendEngToServer(quest3);
             }
         });
 
@@ -92,15 +92,16 @@ public class Page3Fragment extends Fragment {
                 Picasso.get().load(url).into(tale_image);
             }
         });
-
-        sharedViewModel.getAnswer().observe(getViewLifecycleOwner(), new Observer<List<String>>() {
+        // 영어로된 question 받아오기
+        sharedViewModel.getQuestion().observe(getViewLifecycleOwner(), new Observer<List<String>>() {
             @Override
-            public void onChanged(List<String> answer) {
-                ans1 = answer.get(0);
-                ans2 = answer.get(1);
-                ans3 = answer.get(2);
+            public void onChanged(List<String> question) {
+                quest1 = question.get(0);
+                quest2 = question.get(1);
+                quest3 = question.get(2);
             }
         });
+
 
         // timeout setting 해주기
         OkHttpClient okHttpClient = new OkHttpClient().newBuilder()
@@ -129,7 +130,6 @@ public class Page3Fragment extends Fragment {
         @POST("/tts_kakao/")
         Call<ResponseBody> sendText(@Body RequestBody requestBody);
     }
-
     // 영어 한국어로 변환해주는 인터페이스
     public interface EngToKorInterface {
         @Headers({"Content-Type: application/json"})
@@ -180,12 +180,11 @@ public class Page3Fragment extends Fragment {
             e.printStackTrace();
         }
     }
-
-    private void sendEngToServer(String answer) {
+    private void sendEngToServer(String question) {
         try {
             // json 파일 만들기
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("content", answer);
+            jsonObject.put("content", question);
             // JSON 파일을 텍스트로 변환
             String jsonStory = jsonObject.toString();
             // request body를 json 포맷 텍스트로 생성한다
@@ -200,12 +199,13 @@ public class Page3Fragment extends Fragment {
                     if (response.isSuccessful()) {
                         try {
                             String result = response.body().string();
-                            answerList.add(result);
+                            questList.add(result);
 
-                            Log.d("tag", "번역된 정답:" + answerList);
+                            Log.d("tag", "번역된 문제:" + questList);
 
-                            if (answerList.size() == 3){
-                                sharedViewModel.setAnswer(answerList);
+                            if (questList.size() == 3){
+                                sharedViewModel.setQuestion(questList);
+
                             }
 
                         } catch (IOException e) {
